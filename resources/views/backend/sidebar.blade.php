@@ -18,7 +18,7 @@ body {
         <li class="header" style="color: #FAFAFA;">
           <a href="{{ url('/home') }}">
             <i style="font-size: 16px;" class="fa fa-home" aria-hidden="true"></i>
-            <span style="font-size: 16px;">HOME</span>
+            <span style="font-size: 16px;">HOMEs</span>
 
           </a>
         </li>
