@@ -30,7 +30,7 @@
 <div class="content-wrapper">
     <section class="content-header">
         <div >
-		    <div id="img-slider" class="carousel slide" data-ride="carousel">
+		    <!-- <div id="img-slider" class="carousel slide" data-ride="carousel">
 
 		    	<ol class="carousel-indicators">
 		      		<li data-target="#img-slider" data-slide-to="0" class="active"></li>
@@ -94,7 +94,7 @@
 				      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				      <span class="sr-only">Next</span>
 				    </a>
-		  	</div>
+		  	</div> -->
 
         </div>
 
