@@ -85,7 +85,7 @@
     }
 
     .mg0-pd0 {
-        margin-top: 150px;
+        margin-top: 100px;
         padding: 0;
     }
     
@@ -102,7 +102,7 @@
         border-radius: 130px;
     }
 
-    input[type=text], input[type=password] {
+    .right-pane input[type=text], .right-pane input[type=password] {
         height: 65px;
         padding: 20px;
         margin-top: 24px;
@@ -111,6 +111,22 @@
         background-color: #E4E4E4;
         color: #666666;
         border: 0px;
+    }
+
+    .right-pane input[type=text] {
+        background-image: url("{{ asset('images/user.png') }}");
+        background-position: 18px 20px;
+        background-repeat: no-repeat;
+        padding-left: 50px;
+        background-size: 25px;
+    }
+
+    .right-pane input[type=password] {
+        background-image: url("{{ asset('images/lock.png') }}");
+        background-position: 18px 20px;
+        background-repeat: no-repeat;
+        padding-left: 50px;
+        background-size: 25px;
     }
 
     input[type=text]:focus {
@@ -238,16 +254,16 @@
                     </div>
                     <div class="right-pane">
                         <h1>Login</h1>
-                        <p>Welcome! Please login using your account details</p>
+                        <p>Welcome! Please login using your account details.</p>
                         <div class="form-group">
                             <div>
-                                <input id="username" type="text" class="form-control" name="username" required autocomplete="username" autofocus>
+                                <input id="username" type="text" class="form-control frm-username" name="username" required autocomplete="username" autofocus>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div>
-                                <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control frm-password" name="password" required autocomplete="current-password">
                             </div>
                         </div>
 
