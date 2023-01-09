@@ -2,13 +2,14 @@
 
 @section('content')
 
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
   body {
         font-family: 'Poppins', Arial, sans-serif;
         background-repeat: no-repeat;
         font-size: 12px !important;
         height: 100%;
-        background-color: #DFE6F5;
     }
 
     .strike {
@@ -16,8 +17,6 @@
         text-align: center;
         overflow: hidden;
         white-space: nowrap; 
-        margin-top: 24px;
-        color: #B5B5B5;
     }
 
     .strike > span {
@@ -30,9 +29,9 @@
         content: "";
         position: absolute;
         top: 50%;
-        width: 7vw;
+        width: 8vw;
         height: 1px;
-        background: #B5B5B5;
+        background: black;
     }
 
     .strike > span:before {
@@ -46,126 +45,45 @@
     }
 
     .left-pane {
-        width: 45%;
+        width: 40%;
         background-image: url("{{ asset('images/bg-inv-sys.png') }}");
         background-size: cover;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border-radius: 130px 0px 0px 130px;
     }
 
     .minda-logo {
-        width: 220px;
-        height: 230px;
+        width: 150px;
+        height: 160px;
     }
 
     .right-pane {
-        width: 55%;
-        padding: 60px;
+        width: 60%;
+        padding: 30px;
     }
 
     .right-pane h1 {
         font-weight: 700;
     }
 
-    .right-pane p {
-        margin-top: 32px;
-        font-size: 14px;
-        font-weight: 500;
-        color: #A0A0A0;
-    }
-
     .left-pane h2 {
         font-weight: 700;
-        font-size: 32px;
         color: white;
-        margin-top: 24px;
     }
 
     .mg0-pd0 {
-        margin-top: 150px;
+        margin: 0;
         padding: 0;
     }
     
     .cbody {
         display: flex;
         flex-direction: row;
-        background-color: #F5F5F5;
-        height: 650px;
-        box-shadow: -50px 50px 90px rgb(6 8 30 / 30%);
-        border-radius: 130px;
     }
 
-    .card {
-        border-radius: 130px;
-    }
-
-    input[type=text], input[type=password] {
-        height: 65px;
-        padding: 20px;
-        margin-top: 24px;
-        font-size: 16px;
-        border-radius: 10px;
-        background-color: #E4E4E4;
-        color: #666666;
-        border: 0px;
-    }
-
-    input[type=text]:focus {
-        border: 2px solid #00B297;
-        transition: 0.3s;
-    }
-
-    .form-check {
-        padding: 0px;
-    }
-
-    .form-check-label {
-        font-weight: 600;
-        padding-left: 5px;
-    }
-
-    .btn-signin {
-        margin-top: 16px;
-        color: white;
-        background-color: #00B297;
-        width: 200px;
-        height: 50px;
-        border-radius: 0px;
-    }
-
-    button.btn-signin:hover {
-        background-color: #f5f5f5;
-        color: #00B297;
-        transition: 0.2s;
-        border: 4px solid #00b297;
-    }
-
-    .btn-google {
-        margin-top: 16px;
-        border: 4px solid #00B297;
-        background-color: #F5F5F5;
-        height: 50px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        color: #06081E;
-    }
-
-    .btn-google i {
-        margin-right: 10px;
-        font-size: 20px;
-    }
-
-    a.btn-google:hover {
-        background-color: #00B297;
-        color: white;
-        transition: 0.2s;
-    }
+    .card-body {}
   </style>
 <div class="container">
     <div class="row justify-content-center">
@@ -251,30 +169,19 @@
                             </div>
                         </div>
 
-                        <!-- <div class="form-group">
-                            <label class="form-check-label" for="remember">
-                                <input class="flat-red" type="checkbox" name="remember" id="remember">
-                                Remember Me
-                            </label>
-                        </div> -->
-
                         <div class="form-check">
-                            <input class="flat-red" type="checkbox" name="remember" id="remember">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
 
-                            <label class="form-check-label" for="remember">
+                            <label class="form-check-label" for="remember" style="font-weight: normal;">
                                 Remember Me
                             </label>
                         </div>
-
-                        <button class="btn btn-signin">Sign In</button>
 
                         <div class="strike">
-                            <span>or</span>
+                           <span>or</span>
                         </div>
 
-                        <a class="btn btn-block btn-google">
-                            <i class="fa fa-google-plus"></i> Sign in with Google
-                        </a>
+                        <button>Continue with Google</button>
                     </div>
                 </div>
             </div>

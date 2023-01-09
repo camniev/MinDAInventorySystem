@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
 
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css')}}">
+    <link href="{{ asset('css/iCheck/all.css') }}" rel="stylesheet">
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -85,6 +86,23 @@
 <script src="{{ asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-
+<script src="{{ asset('css/iCheck/icheck.min.js') }}"></script>
+<script>
+  //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass: 'iradio_minimal-red'
+    });
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass: 'iradio_flat-green'
+    });
+</script>
 </body>
 </html>
