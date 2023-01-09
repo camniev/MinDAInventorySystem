@@ -246,6 +246,10 @@
                 </div>
             </div>
 
+
+            <!-- ============================================
+            NEW LOGIN
+            ============================================ -->
             <div class="card mg0-pd0">
                 <div class="cbody">
                     <div class="left-pane">
@@ -253,44 +257,59 @@
                     <h2>Inventory System</h2>
                     </div>
                     <div class="right-pane">
-                        <h1>Login</h1>
+                        <h1>{{ __('Login') }}</h1>
                         <p>Welcome! Please login using your account details.</p>
-                        <div class="form-group">
-                            <div>
-                                <input id="username" type="text" class="form-control frm-username" name="username" required autocomplete="username" autofocus>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div>
-                                <input id="password" type="password" class="form-control frm-password" name="password" required autocomplete="current-password">
-                            </div>
-                        </div>
+                        <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                            <div class="form-group">
+                                <div>
+                                    <input id="email" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                        <!-- <div class="form-group">
-                            <label class="form-check-label" for="remember">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert" style="color: #FF0000;">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-check">
                                 <input class="flat-red" type="checkbox" name="remember" id="remember">
-                                Remember Me
-                            </label>
-                        </div> -->
 
-                        <div class="form-check">
-                            <input class="flat-red" type="checkbox" name="remember" id="remember">
+                                <label class="form-check-label" for="remember">
+                                    {{ __('Remember Me') }}
+                                </label>
+                            </div>
 
-                            <label class="form-check-label" for="remember">
-                                Remember Me
-                            </label>
-                        </div>
+                            <button class="btn btn-signin">{{ __('Login') }}</button>
 
-                        <button class="btn btn-signin">Sign In</button>
+                            {{--@if (Route::has('password.request'))
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif--}}
 
-                        <div class="strike">
-                            <span>or</span>
-                        </div>
+                            <div class="strike">
+                                <span>or</span>
+                            </div>
 
-                        <a class="btn btn-block btn-google">
-                            <i class="fa fa-google-plus"></i> Sign in with Google
-                        </a>
+                            <a class="btn btn-block btn-google">
+                                <i class="fa fa-google-plus"></i> Sign in with Google
+                            </a>
+                        </form>
                     </div>
                 </div>
             </div>
