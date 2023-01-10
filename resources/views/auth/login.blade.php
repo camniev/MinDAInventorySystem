@@ -46,7 +46,7 @@
     }
 
     .left-pane {
-        width: 45%;
+        width: 40%;
         background-image: url("{{ asset('images/bg-inv-sys.png') }}");
         background-size: cover;
         display: flex;
@@ -127,11 +127,6 @@
         background-repeat: no-repeat;
         padding-left: 50px;
         background-size: 25px;
-    }
-
-    input[type=text]:focus {
-        border: 2px solid #00B297;
-        transition: 0.3s;
     }
 
     .form-check {

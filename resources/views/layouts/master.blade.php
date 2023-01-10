@@ -17,7 +17,7 @@
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
 
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
 
@@ -41,8 +41,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-    <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
+<!-- 
+    <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{{ asset('js/lightbox.js') }}" defer></script>
 
@@ -83,9 +83,9 @@
 @include('backend.footer')
 </div>
 
-<script src="{{ asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
-<script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('css/iCheck/icheck.min.js') }}"></script>
 <script>
   //iCheck for checkbox and radio inputs

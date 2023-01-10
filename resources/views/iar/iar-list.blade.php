@@ -163,7 +163,7 @@ $(document).ready(function(e){
      },duration);
      document.body.appendChild(el);
      $(el).hide().fadeIn('slow');
-    }
+    } 
 
 function warnAlert(msg,duration)
 
