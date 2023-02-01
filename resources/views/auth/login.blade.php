@@ -54,6 +54,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 130px 0px 0px 130px;
+        padding: 20px;
     }
 
     .minda-logo {
@@ -82,6 +83,7 @@
         font-size: 32px;
         color: white;
         margin-top: 24px;
+        text-align: center;
     }
 
     .mg0-pd0 {
@@ -139,12 +141,13 @@
     }
 
     .btn-signin {
-        margin-top: 16px;
+        margin-top: 24px;
         color: white;
         background-color: #00B297;
-        width: 200px;
+        width: 100%;
         height: 50px;
         border-radius: 0px;
+        border-radius: 10px;
     }
 
     button.btn-signin:hover {
@@ -185,7 +188,7 @@
                 <div class="cbody">
                     <div class="left-pane">
                     <img src="{{ url('/images/minda-logo-inv-sys.png') }}"class="minda-logo"/>
-                    <h2>Inventory System</h2>
+                    <h2>Inventory Management System</h2>
                     </div>
                     <div class="right-pane">
                         <h1>{{ __('Login') }}</h1>

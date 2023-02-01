@@ -28,6 +28,18 @@ body {
             <span style="font-size: 14px;"> Inspection and Acceptance</span>
           </a>
         </li>
+
+        <li class="treeview sidebar-menu">
+          <a href="#">
+            <i class="fa fa-list-ol"></i> <span>Inspection and Acceptance</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="index.html"><i class="fa fa-circle-o"></i> Create New IAR</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> View Masterlist</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> View IARs by Suppliers</a></li>
+          </ul>
+        </li>
+
         <li class="sidebar-menu">
           <a href="{{ url('/request') }}">
             <i class="fa fa-wpforms" aria-hidden="true"></i>
