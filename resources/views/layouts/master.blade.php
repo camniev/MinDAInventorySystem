@@ -43,12 +43,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!-- 
-    <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{{ asset('js/lightbox.js') }}" defer></script>
 
      <style type="text/css"> 
+
+      /** {
+        font-family: 'Poppins', Arial, sans-serif;
+      }*/
+
        body
        {
           font-family: 'Calibri';
@@ -83,8 +85,6 @@
 
 @include('backend.footer')
 </div>
-
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('css/iCheck/icheck.min.js') }}"></script>

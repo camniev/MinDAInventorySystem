@@ -58,6 +58,7 @@
 <div class="content-wrapper" style="margin-left: 20px;">
     <section class="content-header">
     	<div class="content-header" style="color: #084B8A; font-family: 'Calibri'; font-size: 30px;"><Strong>STOCKS LIBRARY</Strong></div>
+    	<!-- <div class="content-header breadcrumb"><h6>Library</h6> <span>&#11044;</span> <h1>Stocks Library</h1></div> -->
     	<span class="d-flex float-right mr-5 mb-2" style="margin-top: -3px;"><button onclick="export_excel();" class="btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-file-excel-o" style="color: #fff;"></span> Export to Excel</button></span>
 
     	<div  style="background-color: #fff; display: inline-block; width: 100%;">
