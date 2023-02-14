@@ -4,8 +4,8 @@
 
 <script>
 		$(document).ready(function() {
-		    var msg = '{{Session::get('alert')}}';
-		    var exist = '{{Session::has('alert')}}';
+		    var msg = '{{ Session::get("alert") }}';
+		    var exist = '{{ Session::has("alert") }}';
 		    if(exist){
 		    	setTimeout(function () { alert(msg); }, 100);
 		    }
@@ -72,7 +72,7 @@
 			<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>UNIT</strong></td>
 			<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>EXPENSE CATEGORY</strong></td>
 			<td width="120" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>RE-ORDER POINT</strong></td>
-			<td width="170" align="center" class="p-2" colspan="2" style="font-family: cambria; font-size: 12px;"><strong>ACTION</strong></td>
+			<td width="170" class="p-2" colspan="2" style="font-family: cambria; font-size: 12px;"><strong>ACTION</strong></td>
 		</tr>
 		@foreach($data as $s)
 		<tr>
@@ -81,8 +81,8 @@
 			<td id="unit_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->unit}}</td>
 			<td id="category_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->expense_category}}</td>
 			<td id="reorder_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px; text-align: center;">{{$s->reorderpoint}}</td>
-			<td align="center" class="p-2" style="font-family: cambria; font-size: 12px;"><button id="{{$s->id}}" class="edit_stock btn btn-sm btn-primary" style="color: #fff"><span class="fa fa-pencil"></span> Edit</button></td>
-			<td align="center" class="p-2" style="font-family: cambria; font-size: 12px;">
+			<td class="p-2" style="font-family: cambria; font-size: 12px;"><button id="{{$s->id}}" class="edit_stock btn btn-sm btn-primary" style="color: #fff"><span class="fa fa-pencil"></span> Edit</button></td>
+			<td class="p-2" style="font-family: cambria; font-size: 12px;">
 
 				<form method="POST" onSubmit="return confirm('Are you sure you want to remove/delete this stock item?')" action="{{ url('/library/remove-stock') }}/{{$s->id}}" enctype="multipart/form-data" class="delete_form"  style="display: inline-flex; margin-left: 5px;">
 					@csrf
@@ -135,21 +135,21 @@
       </div>
       <span id="form_result"></span>
 
-				<table border="1px #fff solid;" style="table-layout: fixed; width:auto;">
+				<table  style="table-layout: fixed; width:auto;">
 					<tr>
-						<td align="center" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>STOCK CODE</strong></td>
-						<td width="230" align="center" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>DESCRIPTION</strong></td>
-						<td align="center" class="p-2" style="font-family: cambria; font-size: 12px; text-align: center;"><strong>UNIT</strong></td>
-						<td width="200" align="center" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>EXPENSE CATEGORY</strong></td>
-						<td align="center" colspan="2" width="120" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>RE-ORDER POINT</strong></td>
+						<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>STOCK CODE</strong></td>
+						<td width="230" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>DESCRIPTION</strong></td>
+						<td class="p-2" style="font-family: cambria; font-size: 12px; text-align: center;"><strong>UNIT</strong></td>
+						<td width="200" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>EXPENSE CATEGORY</strong></td>
+						<td colspan="2" width="120" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>RE-ORDER POINT</strong></td>
 
 					</tr>
 					<tr>
-						<td align="center" valign="top" class=" p-1"><input style="text-align: center; width: 120px;" type="text" id="a_stockcode" name="a_stockcode" class="form-control" width="1px" maxlength="255"required></td>
-						<td  class="p-1" align="center"  valign="top"><textarea style="font-size: 14px; width: 220px;" id="a_stock_description" name="a_stock_description" class="form-control" width="1px" required cols="3" rows="2"></textarea></td>
-						<td  class="p-1" align="center"  valign="top"><input style="text-align: center; width: 80px;" type="text" id="a_unit" name="a_unit" class="form-control" width="1px" maxlength="255"required></td>
-						<td  class="p-1" align="center"  valign="top"><textarea style="font-size: 14px; width: 160px;" id="a_category" name="a_category" class="form-control" width="1px" required cols="3" rows="2"></textarea></td></td>
-						<td colspan="2"  class="p-1" align="center"  valign="top"><input style="text-align: center; width: 60px;" type="text" id="a_reorder" name="a_reorder" class="form-control" width="1px" maxlength="255"required></td>
+						<td valign="top" class=" p-1"><input style="text-align: center; width: 120px;" type="text" id="a_stockcode" name="a_stockcode" class="form-control" width="1px" maxlength="255"required></td>
+						<td  class="p-1"  valign="top"><textarea style="font-size: 14px; width: 220px;" id="a_stock_description" name="a_stock_description" class="form-control" width="1px" required cols="3" rows="2"></textarea></td>
+						<td  class="p-1"  valign="top"><input style="text-align: center; width: 80px;" type="text" id="a_unit" name="a_unit" class="form-control" width="1px" maxlength="255"required></td>
+						<td  class="p-1"  valign="top"><textarea style="font-size: 14px; width: 160px;" id="a_category" name="a_category" class="form-control" width="1px" required cols="3" rows="2"></textarea></td></td>
+						<td colspan="2"  class="p-1"  valign="top"><input style="text-align: center; width: 60px;" type="text" id="a_reorder" name="a_reorder" class="form-control" width="1px" maxlength="255"required></td>
 						<input type="hidden" id="a_st_id" name="a_st_id" value="">
 					</tr>
 					<tr>
@@ -183,21 +183,21 @@
       </div>
       <span id="form_result"></span>
   
-				<table border="1px #fff solid;" style="table-layout: fixed; width:auto;">
+				<table  style="table-layout: fixed; width:auto;">
 					<tr>
-						<td align="center" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>STOCK CODE</strong></td>
-						<td width="230" align="center" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>DESCRIPTION</strong></td>
-						<td align="center" class="p-2" style="font-family: cambria; font-size: 12px; text-align: center;"><strong>UNIT</strong></td>
-						<td align="center" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>EXPENSE CATEGORY</strong></td>
-						<td align="center" colspan="2" width="120" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>RE-ORDER POINT</strong></td>
+						<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>STOCK CODE</strong></td>
+						<td width="230" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>DESCRIPTION</strong></td>
+						<td class="p-2" style="font-family: cambria; font-size: 12px; text-align: center;"><strong>UNIT</strong></td>
+						<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>EXPENSE CATEGORY</strong></td>
+						<td colspan="2" width="120" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>RE-ORDER POINT</strong></td>
 
 					</tr>
 					<tr>
-						<td align="center" valign="top" class=" p-1"><input style="text-align: center; width: 120px;" type="text" id="stockcode" name="stockcode" class="form-control" width="1px" maxlength="255"required></td>
-						<td  class="p-1" align="center"  valign="top"><textarea style="font-size: 14px; width: 200px;" id="stock_description" name="stock_description" class="form-control" width="1px" required cols="3" rows="2"></textarea></td>
-						<td  class="p-1" align="center"  valign="top"><input style="text-align: center; width: 80px;" type="text" id="unit" name="unit" class="form-control" width="1px" maxlength="255"required></td>
-						<td  class="p-1" align="center"  valign="top"><textarea style="font-size: 14px; width: 160px;" id="category" name="category" class="form-control" width="1px" required cols="3" rows="2"></textarea></td></td>
-						<td colspan="2"  class="p-1" align="center"  valign="top"><input style="text-align: center; width: 60px;" type="text" id="reorder" name="reorder" class="form-control" width="1px" maxlength="255"required></td>
+						<td valign="top" class=" p-1"><input style="text-align: center; width: 120px;" type="text" id="stockcode" name="stockcode" class="form-control" width="1px" maxlength="255"required></td>
+						<td  class="p-1"  valign="top"><textarea style="font-size: 14px; width: 200px;" id="stock_description" name="stock_description" class="form-control" width="1px" required cols="3" rows="2"></textarea></td>
+						<td  class="p-1"  valign="top"><input style="text-align: center; width: 80px;" type="text" id="unit" name="unit" class="form-control" width="1px" maxlength="255"required></td>
+						<td  class="p-1"  valign="top"><textarea style="font-size: 14px; width: 160px;" id="category" name="category" class="form-control" width="1px" required cols="3" rows="2"></textarea></td></td>
+						<td colspan="2"  class="p-1"  valign="top"><input style="text-align: center; width: 60px;" type="text" id="reorder" name="reorder" class="form-control" width="1px" maxlength="255"required></td>
 						<input type="hidden" id="st_id" name="st_id" value="">
 					</tr>
 					<tr>
@@ -381,9 +381,10 @@ $(document).ready(function() {
       var data = [];
       var x = 0;
 
-        @foreach($reorderdata as $d )
-            data.push({ ro: '{{ $d->reorderpoint }}', av: '{{ $d->available }}' });
-        @endforeach
+		//commented feb 14 2023
+        // @foreach($reorderdata as $d )
+        //     data.push({ ro: '{{ $d->reorderpoint }}', av: '{{ $d->available }}' });
+        // @endforeach
 
         for (i = 0; i < data.length; i++) {
 

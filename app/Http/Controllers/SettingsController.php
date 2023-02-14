@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\SignSetting;
 
@@ -124,8 +124,7 @@ class SettingsController extends Controller
 
         $data = DB::table('stock_libs')
                 ->orderBy('stock_libs.id','desc')
-                ->paginate(50)
-                ->onEachSide(2);
+                ->paginate(50);
 
 
         return view('stocklibrary.library-list',compact('reorderdata','data'));

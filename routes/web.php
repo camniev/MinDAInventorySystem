@@ -301,14 +301,22 @@ Route::get('/export-excel-iar-number-list/{iarnumber}','ReportController@iar_lis
 
 Route::get('/export-excel-library-list','ReportController@library_list');
 
-//LIBRARY
+// ===================== LIBRARY =====================
 
-Route::get('/library','SettingsController@library_entry');
+Route::group(['prefix => library'], function() {
+	Route::get('/', 'SettingsController@library_entry');
+	Route::get('/add-new-stock', 'SettingsController@save_new_stock');
+	Route::get('/remove-stock/{id}', 'StockLibraryController@remove_stock');
+});
 
-Route::post('/library/add-new-stock','SettingsController@save_new_stock');
+// Route::get('/library','SettingsController@library_entry');
 
-Route::post('/library/remove-stock/{id}','StockLibraryController@remove_stock');
+// Route::post('/library/add-new-stock','SettingsController@save_new_stock');
 
-//<REPORTS
+// Route::post('/library/remove-stock/{id}','StockLibraryController@remove_stock');
+
+
+
+// ===================== REPORTS ===================== 
 
 Route::get('/{id}');
