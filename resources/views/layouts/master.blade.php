@@ -47,9 +47,9 @@
 
      <style type="text/css"> 
 
-      /** {
+      body {
         font-family: 'Poppins', Arial, sans-serif;
-      }*/
+      }
 
        body
        {
@@ -69,6 +69,11 @@
         height: 40px;
        }
 
+       .main-sidebar ul li span {
+        font-size: 11px;
+        font-weight: 600;
+       }
+
      </style>
 
 </head>
@@ -79,11 +84,9 @@
     
   @include('backend.sidebar')
 
-  <main class="py-4">
-      @yield('content')
-  </main>
+  @yield('content')
 
-@include('backend.footer')
+  @include('backend.footer')
 </div>
 
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
