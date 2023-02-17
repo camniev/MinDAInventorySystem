@@ -47,13 +47,9 @@
 
      <style type="text/css"> 
 
-      body {
-        font-family: 'Poppins', Arial, sans-serif;
-      }
-
        body
        {
-          font-family: 'Calibri';
+          font-family: 'Poppins', Arial, sans-serif;
           font-size: 11px;
           font-weight: normal !important;
        }
@@ -69,7 +65,14 @@
         height: 40px;
        }
 
-       .main-sidebar ul li span {
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Poppins', Arial, sans-serif;
+        font-weight: 600;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+       .main-sidebar ul li span, .treeview-menu li a {
         font-size: 11px;
         font-weight: 600;
        }
