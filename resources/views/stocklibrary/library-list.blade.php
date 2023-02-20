@@ -28,11 +28,6 @@
 	        </ul>
 	    </div>
 	@endif
-
-
-	    
-
-});
 </script>
 
 <style>
@@ -59,16 +54,20 @@
 	{
 		transform: translateY(4px);
 	}
+
+	.navbar {
+		margin-bottom: 0px;
+	}
 </style>
 
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding: 0px 24px 0px 24px;">
 
 <!-- <div class="content-wrapper" style="margin-left: 20px;"> -->
     	<!-- <div class="content-header" style="color: #084B8A; font-family: 'Calibri'; font-size: 30px;"><Strong>STOCKS LIBRARY</Strong></div> -->
 		<section class="content-header">
 			<div class="newbreadcrumb">
-				<h5>Library</h5>
-				<span>&#11044;</span>
+				<h5 style="margin-right: 8px;">Library</h5>
+				<span style="margin-right: 8px;">&#11044;</span>
 				<h1>Stocks Library</h1>
 			</div>
 		<!-- <div class="row">
@@ -76,66 +75,65 @@
 		</div> -->
 		</section>
 		<section class="content">
-    	<span class="d-flex float-right mr-5 mb-2" style="margin-top: -3px;"><button onclick="export_excel();" class="btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-file-excel-o" style="color: #fff;"></span> Export to Excel</button></span>
+			<span class="d-flex float-right mr-5 mb-2" style="margin-top: -3px;"><button onclick="export_excel();" class="btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-file-excel-o" style="color: #fff;"></span> Export to Excel</button></span>
 
-    	<div  style="background-color: #fff; display: inline-block; width: 100%;">
+			<div  style="background-color: #fff; display: inline-block; width: 100%;">
 
-<!--Content-->
-@if($data->count()>0)
-	<table style="width: 100%;">
-		<tr>
-			<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>STOCK CODE</strong></td>
-			<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>DESCRIPTION</strong></td>
-			<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>UNIT</strong></td>
-			<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>EXPENSE CATEGORY</strong></td>
-			<td width="120" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>RE-ORDER POINT</strong></td>
-			<td width="170" class="p-2" colspan="2" style="font-family: cambria; font-size: 12px;"><strong>ACTION</strong></td>
-		</tr>
-		@foreach($data as $s)
-		<tr>
-			<td id="stock_code_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->stock_code}}</td>
-			<td id="description_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->description}}</td>
-			<td id="unit_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->unit}}</td>
-			<td id="category_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->expense_category}}</td>
-			<td id="reorder_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px; text-align: center;">{{$s->reorderpoint}}</td>
-			<td class="p-2" style="font-family: cambria; font-size: 12px;"><button id="{{$s->id}}" class="edit_stock btn btn-sm btn-primary" style="color: #fff"><span class="fa fa-pencil"></span> Edit</button></td>
-			<td class="p-2" style="font-family: cambria; font-size: 12px;">
+		<!--Content-->
+		@if($data->count()>0)
+		<table style="width: 100%;">
+			<tr>
+				<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>STOCK CODE</strong></td>
+				<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>DESCRIPTION</strong></td>
+				<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>UNIT</strong></td>
+				<td class="p-2" style="font-family: cambria; font-size: 12px;"><strong>EXPENSE CATEGORY</strong></td>
+				<td width="120" class="p-2" style="font-family: cambria; font-size: 12px;"><strong>RE-ORDER POINT</strong></td>
+				<td width="170" class="p-2" colspan="2" style="font-family: cambria; font-size: 12px;"><strong>ACTION</strong></td>
+			</tr>
+			@foreach($data as $s)
+			<tr>
+				<td id="stock_code_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->stock_code}}</td>
+				<td id="description_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->description}}</td>
+				<td id="unit_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->unit}}</td>
+				<td id="category_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px;">{{$s->expense_category}}</td>
+				<td id="reorder_{{$s->id}}" class="p-2" style="font-family: cambria; font-size: 12px; text-align: center;">{{$s->reorderpoint}}</td>
+				<td class="p-2" style="font-family: cambria; font-size: 12px;"><button id="{{$s->id}}" class="edit_stock btn btn-sm btn-primary" style="color: #fff"><span class="fa fa-pencil"></span> Edit</button></td>
+				<td class="p-2" style="font-family: cambria; font-size: 12px;">
 
-				<form method="POST" onSubmit="return confirm('Are you sure you want to remove/delete this stock item?')" action="{{ url('/library/remove-stock') }}/{{$s->id}}" enctype="multipart/form-data" class="delete_form"  style="display: inline-flex; margin-left: 5px;">
-					@csrf
-				<button class="btn btn-sm btn-danger" style="text-decoration: none; font-size: 11px; "><span class="fa fa-trash-o" title="Delete"></span> Delete</button></form>
+					<form method="POST" onSubmit="return confirm('Are you sure you want to remove/delete this stock item?')" action="{{ url('/library/remove-stock') }}/{{$s->id}}" enctype="multipart/form-data" class="delete_form"  style="display: inline-flex; margin-left: 5px;">
+						@csrf
+					<button class="btn btn-sm btn-danger" style="text-decoration: none; font-size: 11px; "><span class="fa fa-trash-o" title="Delete"></span> Delete</button></form>
 
-			</td>
-		</tr>
-		@endforeach
+				</td>
+			</tr>
+			@endforeach
 
-		@if($data->count() > 0)
-		<tr>
-			<td colspan="5" style="border-bottom:  1px solid #fff;">
-				<div class="justify-content-center" style="font-size: 10px; margin-top: 10px;">{{ $data->links() }}</div>
+			@if($data->count() > 0)
+			<tr>
+				<td colspan="5" style="border-bottom:  1px solid #fff;">
+					<div class="justify-content-center" style="font-size: 10px; margin-top: 10px;">{{ $data->links() }}</div>
+									
+				</td>
+
+			</tr>
+			@endif
+			<tr id="showreorder" style="display: none;">
+				<td colspan="6" style="border-top: 1px solid #fff;">
+
+					<a href="#" onclick="'javascript:void(0)'" class="btn_list btn-sm btn-success mt-1 mb-1 mr-1" style="color: #fff; float: right;"><span class="fa fa-book"></span> Show Lists</a>
+
+				</td>
+			</tr>
+			<tr>
 								
-			</td>
-
-		</tr>
+			</tr>
+		</table>
 		@endif
-		<tr id="showreorder" style="display: none;">
-			<td colspan="6" style="border-top: 1px solid #fff;">
+		<div class="addstockbtn"><button class="btn-add btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-plus-square-o"></span> Add New Stock Codes</button></div>
+	<!--Content End-->
+		</div>
 
-				<a href="#" onclick="'javascript:void(0)'" class="btn_list btn-sm btn-success mt-1 mb-1 mr-1" style="color: #fff; float: right;"><span class="fa fa-book"></span> Show Lists</a>
-
-			</td>
-		</tr>
-		<tr>
-							
-		</tr>
-	</table>
-	
-@endif
-	<div class="addstockbtn"><button class="btn-add btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-plus-square-o"></span> Add New Stock Codes</button></div>
-<!--Content End-->
-    </div>
-
-</section>
+	</section>
 
 </div>
 
