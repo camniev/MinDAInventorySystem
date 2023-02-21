@@ -25,16 +25,16 @@
 
 
    <style>
-        body {
+        /* body {
           font-family: Calibri;
-          background-image: url('{{ url('/images/1920x1080-gray-solid-color-background.png') }}');
+          background-image: url('{{ url("/images/1920x1080-gray-solid-color-background.png") }}');
           background-repeat: repeat;
           font-size: 14px !important;
           height: 100%;
-        }
+        } */
 
         .banner_bg {
-          background-image: url('{{ url('/images/banner_1280x60hw_minda_combi_color.png') }}');
+          background-image: url('{{ url("/images/banner_1280x60hw_minda_combi_color.png") }}');
           background-repeat: no-repeat;
           height: 100%;
           width: 100%;
