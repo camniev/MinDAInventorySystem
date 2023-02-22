@@ -66,7 +66,6 @@
         }
 
         tr:nth-child(odd) td {
-           {{--background: #F2F2F2;--}}
            background: #FFF;
         }
 

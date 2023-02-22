@@ -1,29 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="{{ asset('css/carousel/carousel.css') }}" rel="stylesheet">
-  <script src="{{ asset('js/carousel/carousel.js') }}" defer></script>
-  <script src="{{ asset('js/carousel/bootstrap.js') }}" defer></script>
-
-  <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-    width: 70%;
-    margin: auto;
-  }
-
-  body {
-          font-family: Calibri;
-          background-repeat: no-repeat;
-          font-size: 10px !important;
-          height: 100%;
-        }
-  </style>
-
-
 <div class="content-wrapper" style="margin-left: 20px;">
 
 

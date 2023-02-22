@@ -20,6 +20,37 @@ body {
   background-color: #f8fafc;
 }
 
+.newbreadcrumb {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+/* Library */
+
+.addstockbtn
+{
+  position:fixed;
+  right:0;
+  bottom:0;
+  margin: 20px;
+  margin-right: 35px;
+  box-shadow: 5px 5px 5px #595958;
+  border: 1px solid #fff;
+  border-radius: 2px;
+}
+
+.addstockbtn:active
+{
+  transform: translateY(4px);
+}
+
+.navbar {
+  margin-bottom: 0px !important;
+}
+
+/* end library */
+
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }

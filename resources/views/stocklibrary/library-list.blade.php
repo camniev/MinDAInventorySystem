@@ -32,32 +32,7 @@
 
 <style>
 
-	.newbreadcrumb {
-		height: 100px;
-		display: flex;
-		align-items: center;
-	}
 	
-	.addstockbtn
-	{
-		position:fixed;
-		right:0;
-		bottom:0;
-		margin: 20px;
-		margin-right: 35px;
-		box-shadow: 5px 5px 5px #595958;
-		border: 1px solid #fff;
-		border-radius: 2px;
-	}
-
-	.addstockbtn:active
-	{
-		transform: translateY(4px);
-	}
-
-	.navbar {
-		margin-bottom: 0px;
-	}
 </style>
 
 <div class="content-wrapper" style="padding: 0px 24px 0px 24px;">
@@ -66,8 +41,8 @@
     	<!-- <div class="content-header" style="color: #084B8A; font-family: 'Calibri'; font-size: 30px;"><Strong>STOCKS LIBRARY</Strong></div> -->
 		<section class="content-header">
 			<div class="newbreadcrumb">
-				<h5 style="margin-right: 8px;">Library</h5>
-				<span style="margin-right: 8px;">&#11044;</span>
+				<h5 class="mr-3">Library</h5>
+				<span class="mr-3">&#11044;</span>
 				<h1>Stocks Library</h1>
 			</div>
 		<!-- <div class="row">
