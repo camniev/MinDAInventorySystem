@@ -45,10 +45,10 @@
 				<span class="mr-3">&#11044;</span>
 				<h1>Stocks Library</h1>
 			</div>
-			<button class="btn btn-default pull-right"><span class="fa fa-plus"></span> Add New Stocks </button>
+			<button class="btn btn-primary pull-right btn-lg"><span class="fa fa-plus"></span> Add New Stocks </button>
 		</section>
 		<section class="content">
-			<span class="d-flex float-right mr-5 mb-2" style="margin-top: -3px;"><button onclick="export_excel();" class="btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-file-excel-o" style="color: #fff;"></span> Export to Excel</button></span>
+			<!-- <span class="d-flex float-right mr-5 mb-2" style="margin-top: -3px; display: none;"><button onclick="export_excel();" class="btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-file-excel-o" style="color: #fff;"></span> Export to Excel</button></span> -->
 
 			<div  style="background-color: #fff; display: inline-block; width: 100%;">
 
