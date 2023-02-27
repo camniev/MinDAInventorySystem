@@ -77,6 +77,35 @@
         font-weight: 600;
        }
 
+
+      /* modal */
+      .fade {
+        transition: opacity .15s linear;
+        opacity: 1;
+      }
+
+      .modal-dialog {
+        margin-top: 150px;
+      }
+
+      .modal-header {
+        display: block;
+        padding: 0px;
+        border-bottom: 1px solid #dee2e6;
+        border-top-left-radius: calc(0.3rem - 1px);
+        border-top-right-radius: calc(0.3rem - 1px);
+        padding: 2rem 2rem;
+      }
+
+      .modal-header .close {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .modal-xl {
+        width: 1140px;
+      }
+
      </style>
 
 </head>

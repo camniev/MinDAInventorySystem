@@ -45,7 +45,7 @@
 				<span class="mr-3">&#11044;</span>
 				<h1>Stocks Library</h1>
 			</div>
-			<button class="btn btn-primary pull-right btn-lg"><span class="fa fa-plus"></span> Add New Stocks </button>
+			<button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#addStocksModal" onclick="addStocksModal();" style="margin-bottom: 20px;"><i class="fa fa-plus"></i> Add New Stocks</button>
 		</section>
 		<section class="content">
 			<!-- <span class="d-flex float-right mr-5 mb-2" style="margin-top: -3px; display: none;"><button onclick="export_excel();" class="btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-file-excel-o" style="color: #fff;"></span> Export to Excel</button></span> -->
@@ -102,7 +102,7 @@
 			</tr>
 		</table>
 		@endif
-		<div class="addstockbtn"><button class="btn-add btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-plus-square-o"></span> Add New Stock Codes</button></div>
+		<!-- <div class="addstockbtn"><button class="btn-add btn btn-sm btn-success" style="color: #fff;"><span class="fa fa-plus-square-o"></span> Add New Stock Codes</button></div> -->
 	<!--Content End-->
 		</div>
 
@@ -156,6 +156,48 @@
     </div>
   </div>
 </div>
+
+
+<!-- new modal for adding stocks -->
+<div id="addStocksModal" class="modal fade modal-default" role="dialog">
+      <div class="modal-dialog modal-xl">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><i class="fa fa-plus"></i> Add New Schedule</h4>
+          </div>
+          <form>
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="firstName">Patient's Full Name</label>
+                <input type="text" class="form-control" name="patients_name" placeholder="Enter Patient's Full Name" id="patients_name">
+              </div>
+              <div class="form-group">
+                <label for="age">Contact No.</label>
+                <input type="text" class="form-control" name="patients_phonenum" placeholder="Enter Contact No." id="patients_phonenum">
+              </div>
+              <div class="form-group">
+                <label>Date of Schedule</label>
+
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="date_of_schedule" data-date-format="yyyy-mm-dd" placeholder="Select Date" name="date_of_schedule">
+                </div>
+                <!-- /.input group -->
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
+          </div>
+		</form>
+        </div>
+      </div>
+    </div>
 
 
 <!-- Edit Item Modal -->
@@ -395,5 +437,67 @@ $(document).ready(function() {
 		window.location = "{{ url('/export-excel-library-list') }}";
 		
 	}
+
+
+	function addStocksModal() {
+
+		$("#addStocksModal").modal('show');
+
+    // //remove textdanger
+    // $(".text-danger").remove();
+    // //remove form-group
+    // $(".form-group").removeClass('has-error').removeClass('has-success');
+
+    // $("#addPatientsForm").unbind('submit').bind('submit', function() {
+    //   var form = $(this);
+
+    //   //remove the text-danger
+    //   $(".text-danger").remove();
+
+    //   $.ajax({
+    //     url: form.attr('action'),
+    //     type: form.attr('method'),
+    //     data: form.serialize(), //converting form data into array and sending to server
+    //     dataType: 'json',
+    //     success:function(response) {
+    //       if(response.success === true) {
+    //         $(".messages").html('<div class="alert alert-success alert-dismissable">'+
+    //           '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+    //           '<strong><span class="glyphicon glyphicon-ok-sign"> </strong> '+response.messages+
+    //           '</div>');
+    //         //hide modal
+    //           $("#addStocksModal").modal('hide');
+
+    //           //update manageMemberTable
+    //         //   scheduledCheckupsTodayTable.ajax.reload(null, false);
+    //         //   scheduledCheckupsTwoDaysTable.ajax.reload(null, false);
+    //         //   scheduledCheckupsDaysFromNowTable.ajax.reload(null, false);
+    //         //   newScheduledCheckupsTable.ajax.reload(null, false);
+    //       } else {
+    //         if(response.messages instanceof Object) {
+    //           $.each(response.messages, function(index, value) {
+    //             var id = $("#"+index);
+
+    //             id
+    //             .closest('.form-group')
+    //             .removeClass('has-error')
+    //             .removeClass('has-success')
+    //             .addClass(value.length > 0 ? 'has-error' : 'has-success')
+    //             .after(value);
+    //           });
+    //           $(".messages").html('<div class="alert alert-warning alert-dismissable">'+
+    //           '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+    //           '<strong><span class="glyphicon glyphicon-exclamation-sign"> </strong> '+'Error while adding the data'+
+    //           '</div>');
+    //         }
+    //       }
+    //     }
+    //   });
+    //   return false;
+    // });
+  }
  </script>
+
+
+
 @endsection
