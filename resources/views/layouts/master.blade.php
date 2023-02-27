@@ -31,6 +31,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css')}}">
+
     <style type="text/css">
       @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
     </style>
@@ -122,6 +125,8 @@
 </div>
 
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('css/iCheck/icheck.min.js') }}"></script>
 <script>
   //iCheck for checkbox and radio inputs
@@ -138,6 +143,10 @@
     $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
       checkboxClass: 'icheckbox_flat-green',
       radioClass: 'iradio_flat-green'
+    });
+
+    $(function() {
+      $(".select2").select2();
     });
 </script>
 </body>

@@ -166,29 +166,49 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><i class="fa fa-plus"></i> Add New Schedule</h4>
+            <h4 class="modal-title"><i class="fa fa-plus"></i> Add New Stocks</h4>
           </div>
           <form>
           <div class="modal-body">
               <div class="form-group">
-                <label for="firstName">Patient's Full Name</label>
-                <input type="text" class="form-control" name="patients_name" placeholder="Enter Patient's Full Name" id="patients_name">
+                <label for="firstName">Stock Code</label>
+                <input type="text" class="form-control" name="stock_code" placeholder="Enter Stock Code" id="stock_code">
               </div>
-              <div class="form-group">
-                <label for="age">Contact No.</label>
-                <input type="text" class="form-control" name="patients_phonenum" placeholder="Enter Contact No." id="patients_phonenum">
-              </div>
-              <div class="form-group">
-                <label>Date of Schedule</label>
-
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="date_of_schedule" data-date-format="yyyy-mm-dd" placeholder="Select Date" name="date_of_schedule">
+			  <!-- textarea -->
+			  <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="form-control" rows="3" name="description" placeholder="Enter description"></textarea>
                 </div>
-                <!-- /.input group -->
-              </div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Unit</label>
+							<select class="form-control select2" style="width: 100%;">
+								<option selected="selected">Select a unit</option>
+								<option>ream</option>
+								<option>piece</option>
+								<option>set</option>
+								<option>cart</option>
+								<option>roll</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Expense Category</label>
+							<select class="form-control select2" style="width: 100%;">
+								<option selected="selected">Select an expense category</option>
+								<option>Office Supplies</option>
+								<option>ICT Supplies</option>
+								<option>Other Supplies Inventory</option>
+								<option>Semi-expendable ICT Equipment</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+
+              
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
