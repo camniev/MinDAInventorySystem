@@ -94,10 +94,15 @@
       .modal-header {
         display: block;
         padding: 0px;
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 0px;
         border-top-left-radius: calc(0.3rem - 1px);
         border-top-right-radius: calc(0.3rem - 1px);
         padding: 2rem 2rem;
+        text-align: center;
+      }
+
+      .modal-content h4 {
+        font-weight: 500;
       }
 
       .modal-header .close {
@@ -108,6 +113,26 @@
       .modal-xl {
         width: 1140px;
       }
+
+      .modal-body {
+        padding: 25px 25px 25px 25px;
+      }
+
+      .modal-body .form-group input[type=text], .modal-body .form-group textarea, .modal-body .form-group select {
+        border: 0px;
+        background-color: #e9f3f5;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        font-size: 13px;
+        margin-bottom: 24px;
+        color: #000;
+        font-weight: 500;
+      }
+
+      /* .modal-body .form-group input[type=text]:focus {
+        color: #000;
+        font-weight: 500;
+      } */
 
      </style>
 

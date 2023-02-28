@@ -160,24 +160,24 @@
 
 <!-- new modal for adding stocks -->
 <div id="addStocksModal" class="modal fade modal-default" role="dialog">
-      <div class="modal-dialog modal-xl">
+      <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><i class="fa fa-plus"></i> Add New Stocks</h4>
+            <h4 class="modal-title">Add New Stocks</h4>
           </div>
           <form>
           <div class="modal-body">
               <div class="form-group">
-                <label for="firstName">Stock Code</label>
-                <input type="text" class="form-control" name="stock_code" placeholder="Enter Stock Code" id="stock_code">
+                <label for="firstName">STOCK CODE</label>
+                <input type="text" class="form-control" name="stock_code" id="stock_code">
               </div>
 			  <!-- textarea -->
 			  <div class="form-group">
-                  <label>Description</label>
-                  <textarea class="form-control" rows="3" name="description" placeholder="Enter description"></textarea>
+                  <label>DESCRIPTION</label>
+                  <textarea class="form-control" rows="3" name="description" id="description"></textarea>
                 </div>
 				<div class="row">
 					<div class="col-md-6">
