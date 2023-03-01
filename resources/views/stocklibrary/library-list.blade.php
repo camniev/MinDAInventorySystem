@@ -160,64 +160,84 @@
 
 <!-- new modal for adding stocks -->
 <div id="addStocksModal" class="modal fade modal-default" role="dialog">
-      <div class="modal-dialog">
+	<div class="modal-dialog modal-xl modal-dialog-centered">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title mt-4">Add New Stocks</h4>
+			</div>
+			<div class="modal-body px-5">
+				<!-- Rounded tabs -->
+				<ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+					<li class="nav-item flex-sm-fill">
+						<a id="encode_ind_stocks_tab" data-toggle="tab" href="#encode_ind_stocks" role="tab" aria-controls="encode_ind_stocks" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active"> <span class="fa fa-pen"></span> Input Individual Stock</a>
+					</li>
+					<li class="nav-item flex-sm-fill">
+						<a id="upload_excel_stocks_tab" data-toggle="tab" href="#upload_excel_stocks" role="tab" aria-controls="upload_excel_stocks" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Upload List of Stocks</a>
+					</li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					<div id="encode_ind_stocks" role="tabpanel" aria-labelledby="encode_ind_stocks_tab" class="tab-pane fade px-4 py-5 show active">
+						<div class="form-group">
+							<label for="firstName">STOCK CODE</label>
+							<input type="text" class="form-control" name="stock_code" id="stock_code">
+						</div>
 
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Add New Stocks</h4>
-          </div>
-          <form>
-          <div class="modal-body">
-              <div class="form-group">
-                <label for="firstName">STOCK CODE</label>
-                <input type="text" class="form-control" name="stock_code" id="stock_code">
-              </div>
-			  <!-- textarea -->
-			  <div class="form-group">
-                  <label>DESCRIPTION</label>
-                  <textarea class="form-control" rows="3" name="description" id="description"></textarea>
-                </div>
-				<div class="row">
-					<div class="col-md-6">
+						<!-- textarea -->
 						<div class="form-group">
-							<label>Unit</label>
-							<select class="form-control select2" style="width: 100%;">
-								<option selected="selected">Select a unit</option>
-								<option>ream</option>
-								<option>piece</option>
-								<option>set</option>
-								<option>cart</option>
-								<option>roll</option>
-							</select>
+							<label>DESCRIPTION</label>
+							<textarea class="form-control" rows="3" name="description" id="description"></textarea>
 						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label>Expense Category</label>
-							<select class="form-control select2" style="width: 100%;">
-								<option selected="selected">Select an expense category</option>
-								<option>Office Supplies</option>
-								<option>ICT Supplies</option>
-								<option>Other Supplies Inventory</option>
-								<option>Semi-expendable ICT Equipment</option>
-							</select>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>UNIT</label>
+									<select class="form-control select2" style="width: 100%;">
+										<option value="" selected disabled>Select a unit</option>
+										<option>ream</option>
+										<option>piece</option>
+										<option>set</option>
+										<option>cart</option>
+										<option>roll</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>EXPENSE CATEGORY</label>
+									<select class="form-control select2" style="width: 100%;">
+										<option value="" selected disabled>Select an expense category</option>
+										<option>Office Supplies</option>
+										<option>ICT Supplies</option>
+										<option>Other Supplies Inventory</option>
+										<option>Semi-expendable ICT Equipment</option>
+									</select>
+								</div>
+							</div>
 						</div>
+						<!-- form buttons -->
+						<div class="mt-3 mb-5 pull-right">
+							<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
+							<button type="submit" class="btn btn-primary"> Save</button>
+						</div>
+						<!-- end form buttons -->
 					</div>
+					<div id="upload_excel_stocks" role="tabpanel" aria-labelledby="upload_excel_stocks_tab" class="tab-pane fade px-4 py-5">
+						<p class="text-muted">Lsdfsdfsllum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+						irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+					<!-- End rounded tabs -->
 				</div>
-				
-
-              
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
-            <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
-          </div>
-		</form>
-        </div>
-      </div>
-    </div>
+			<div class="modal-footer">
+				<!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+				<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button> -->
+			</div>
+		</div>
+	</div>
+</div>
 
 
 <!-- Edit Item Modal -->

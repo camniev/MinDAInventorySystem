@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,21 +10,23 @@
 
   <title>Mindanao Development Authority Inventory Management System</title>
 
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/minda.css') }}" rel="stylesheet">
-
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
 
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
 
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css')}}">
+    
     <link href="{{ asset('css/iCheck/all.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -41,6 +42,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -101,8 +103,12 @@
         text-align: center;
       }
 
+      .modal-content {
+        border-radius: 10px;
+      }
+
       .modal-content h4 {
-        font-weight: 500;
+        font-weight: 600;
       }
 
       .modal-header .close {
@@ -111,11 +117,7 @@
       }
 
       .modal-xl {
-        width: 1140px;
-      }
-
-      .modal-body {
-        padding: 25px 25px 25px 25px;
+        width: 700px;
       }
 
       .modal-body .form-group input[type=text], .modal-body .form-group textarea, .modal-body .form-group select {
@@ -129,11 +131,111 @@
         font-weight: 500;
       }
 
+      .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+          color: #fff;
+          background-color: #007bff;
+      }
+
+      .nav {
+        display:flex;
+      }
+      
+
       /* .modal-body .form-group input[type=text]:focus {
         color: #000;
         font-weight: 500;
       } */
 
+      /* modal select */
+
+      .select2-container--default .select2-selection--single {
+        background-color: #e9f3f5;
+        /* border: 1px solid #aaa; */
+        /* border-radius: 4px; */
+        border: 0px;
+      }
+
+      /* select textbox size */
+      .select2-container .select2-selection--single {
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        height: 0px;
+        padding-top: 14px;
+        padding-bottom: 36px;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+
+      /* select text line height */
+      /* .select2-container--default .select2-selection--single .select2-selection__rendered {
+          color: #444;
+          line-height: 0px;
+      } */
+
+      .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: #444;
+        line-height: 28px;
+      }
+
+
+      /* select arrow */
+      .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 26px;
+        position: absolute;
+        top: 14px;
+        right: 4px;
+        width: 20px;
+      }
+
+      .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 26px;
+        position: absolute;
+        top: 10px;
+        right: 4px;
+        width: 20px;
+      }
+
+      /* end modal select */
+
+      /* Rounded tabs */
+
+    @media (min-width: 576px) {
+      .rounded-nav {
+        border-radius: 50rem !important;
+      }
+    }
+
+    @media (min-width: 576px) {
+      .rounded-nav .nav-link {
+        border-radius: 50rem !important;
+      }
+    }
+
+    /* With arrow tabs */
+
+    .with-arrow .nav-link.active {
+      position: relative;
+    }
+
+    .with-arrow .nav-link.active::after {
+      content: '';
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #2b90d9;
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+    }
+
+    .btn-blank {
+      color: #444;
+      border-color: 0px;
+    }
+    
      </style>
 
 </head>
