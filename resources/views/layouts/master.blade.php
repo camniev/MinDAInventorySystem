@@ -18,6 +18,8 @@
 
     <link href="{{ asset('css/minda.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('css/file-upload.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
 
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css')}}">
@@ -30,6 +32,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Select2 -->
@@ -48,6 +52,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
     <script src="{{ asset('js/lightbox.js') }}" defer></script>
 
      <style type="text/css"> 
@@ -240,20 +245,25 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+  <div class="wrapper">
 
-  @include('backend.header')
-    
-  @include('backend.sidebar')
+    @include('backend.header')
+      
+    @include('backend.sidebar')
 
-  @yield('content')
+    @yield('content')
 
-  @include('backend.footer')
-</div>
+    @include('backend.footer')
+  </div>
+</body>
+
+<!-- file upload script -->
+<script src="{{ asset('js/fu-script.js') }}"></script>
 
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+
 <script src="{{ asset('css/iCheck/icheck.min.js') }}"></script>
 <script>
   //iCheck for checkbox and radio inputs
@@ -276,5 +286,4 @@
       $(".select2").select2();
     });
 </script>
-</body>
 </html>

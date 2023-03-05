@@ -31,12 +31,7 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-
-  <main class="py-4">
-      @yield('content')
-  </main>
-
+  @yield('content')
 </div>
 
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>

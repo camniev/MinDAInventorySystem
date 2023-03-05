@@ -171,7 +171,7 @@
 				<!-- Rounded tabs -->
 				<ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
 					<li class="nav-item flex-sm-fill">
-						<a id="encode_ind_stocks_tab" data-toggle="tab" href="#encode_ind_stocks" role="tab" aria-controls="encode_ind_stocks" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active"> <span class="fa fa-pen"></span> Input Individual Stock</a>
+						<a id="encode_ind_stocks_tab" data-toggle="tab" href="#encode_ind_stocks" role="tab" aria-controls="encode_ind_stocks" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active"> Input Individual Stock</a>
 					</li>
 					<li class="nav-item flex-sm-fill">
 						<a id="upload_excel_stocks_tab" data-toggle="tab" href="#upload_excel_stocks" role="tab" aria-controls="upload_excel_stocks" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Upload List of Stocks</a>
@@ -224,10 +224,17 @@
 						</div>
 						<!-- end form buttons -->
 					</div>
-					<div id="upload_excel_stocks" role="tabpanel" aria-labelledby="upload_excel_stocks_tab" class="tab-pane fade px-4 py-5">
-						<p class="text-muted">Lsdfsdfsllum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<p class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-						irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<div id="upload_excel_stocks" role="tabpanel" aria-labelledby="upload_excel_stocks_tab" class="tab-pane fade px-4 pt-4">
+						<!-- insert new file input form here -->
+						<div class="fu-wrapper">
+							<form action="#" class="fu-form">
+								<input class="file-input" type="file" name="file" hidden>
+								<i class="fas fa-cloud-upload-alt"></i>
+								<p>Browse the Excel File to Upload</p>
+							</form>
+							<section class="progress-area"></section>
+							<section class="uploaded-area"></section>
+						</div>
 					</div>
 					<!-- End rounded tabs -->
 				</div>
@@ -286,6 +293,7 @@
     </div>
   </div>
 </div>
+	</div>
 
 <script type="text/javascript">
 
@@ -536,8 +544,7 @@ $(document).ready(function() {
     //   return false;
     // });
   }
- </script>
 
-
+</script>
 
 @endsection

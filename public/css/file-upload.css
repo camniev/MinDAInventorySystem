@@ -1,0 +1,108 @@
+::selection{
+    color: #fff;
+    background: #007bff;
+  }
+  .fu-wrapper{
+    width: 80%;
+    background: #fff;
+    border-radius: 5px;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .fu-wrapper header{
+    color: #007bff;
+    font-size: 27px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .fu-wrapper form{
+    height: 210px;
+    display: flex;
+    cursor: pointer;
+    margin: 20px 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 2px dashed #007bff;
+  }
+  form :where(i, p){
+    color: #007bff;
+  }
+  form i{
+    font-size: 50px;
+  }
+  form p{
+    margin-top: 15px;
+    font-size: 16px;
+  }
+  
+  section .row{
+    margin-bottom: 10px;
+    background: #eaffe4;
+    list-style: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  section .row i{
+    color: #1d9e5d;
+    font-size: 30px;
+  }
+  section .details span{
+    font-size: 14px;
+  }
+  .progress-area .row .fu-content{
+    width: 100%;
+    margin-left: 15px;
+  }
+  .progress-area .details{
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+    justify-content: space-between;
+  }
+  .progress-area .fu-content .progress-bar{
+    height: 6px;
+    width: 100%;
+    margin-bottom: 4px;
+    background: #fff;
+    border-radius: 30px;
+  }
+  .fu-content .progress-bar .progress{
+    height: 100%;
+    width: 0%;
+    background: #007bff;
+    border-radius: inherit;
+  }
+  .uploaded-area{
+    max-height: 232px;
+    overflow-y: scroll;
+  }
+  .uploaded-area.onprogress{
+    max-height: 150px;
+  }
+  .uploaded-area::-webkit-scrollbar{
+    width: 0px;
+  }
+  .uploaded-area .row .fu-content{
+    display: flex;
+    align-items: center;
+  }
+  .uploaded-area .row .details{
+    display: flex;
+    margin-left: 15px;
+    flex-direction: column;
+  }
+  .uploaded-area .row .details .size{
+    color: #404040;
+    font-size: 11px;
+  }
+  .uploaded-area i.fa-check{
+    font-size: 16px;
+  }
+  
