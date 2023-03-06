@@ -129,4 +129,8 @@ class StockLibraryController extends Controller
 
         return redirect('/library')->with('alert','Stock deleted');
     }
+
+    public function batchUploadStocks(Request $request) {
+        
+    }
 }

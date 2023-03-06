@@ -60,8 +60,8 @@ function uploadFile(name){
                             <i class="fas fa-check"></i>
                           </li>`;
       uploadedArea.classList.remove("onprogress");
-      // uploadedArea.innerHTML = uploadedHTML; //uncomment this line if you don't want to show upload history
-      uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML); //remove this line if you don't want to show upload history
+      uploadedArea.innerHTML = uploadedHTML; //uncomment this line if you don't want to show upload history
+      //uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML); //remove this line if you don't want to show upload history
     }
   });
   let data = new FormData(form); //FormData is an object to easily send form data

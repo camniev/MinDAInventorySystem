@@ -307,6 +307,7 @@ Route::group(['prefix' => 'library'], function() {
 	Route::get('/', 'SettingsController@library_entry');
 	Route::get('/add-new-stock', 'SettingsController@save_new_stock');
 	Route::get('/remove-stock/{id}', 'StockLibraryController@remove_stock');
+	Route::get('/batch_upload_stocks', 'StockLibraryController@batchUploadStocks');
 });
 
 // Route::get('/library','SettingsController@library_entry');
