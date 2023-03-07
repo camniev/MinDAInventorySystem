@@ -17,7 +17,7 @@
     text-align: center;
   }
 
-  .fu-wrapper form{
+  .fu-wrapper .div-fu-form{
     height: 210px;
     display: flex;
     cursor: pointer;
@@ -28,13 +28,16 @@
     border-radius: 5px;
     border: 2px dashed #007bff;
   }
-  form :where(i, p){
+  
+  .div-fu-form :where(i, p){
     color: #007bff;
   }
-  form i{
+
+  .div-fu-form i{
     font-size: 50px;
   }
-  form p{
+
+  .div-fu-form p{
     margin-top: 15px;
     font-size: 16px;
   }

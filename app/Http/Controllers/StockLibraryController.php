@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ImportStock;
 use Illuminate\Http\Request;
 use DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StockLibraryController extends Controller
 {
@@ -131,6 +133,7 @@ class StockLibraryController extends Controller
     }
 
     public function batchUploadStocks(Request $request) {
-        
+        Excel::import(new ImportStock, $request->file('file')->store('files'));
+        return redirect()->back();
     }
 }

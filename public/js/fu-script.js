@@ -1,11 +1,12 @@
 //   scripts for file upload
-const form = document.querySelector(".fu-form"),
+const divForm = document.querySelector(".div-fu-form"),
+form = document.querySelector(".fu-form"),
 fileInput = document.querySelector(".file-input"),
 progressArea = document.querySelector(".progress-area"),
 uploadedArea = document.querySelector(".uploaded-area");
 
 // form click event
-form.addEventListener("click", () =>{
+divForm.addEventListener("click", () =>{
 	console.log('event is clicked');
 	fileInput.click();
 });

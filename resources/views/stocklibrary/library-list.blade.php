@@ -227,14 +227,26 @@
 					<div id="upload_excel_stocks" role="tabpanel" aria-labelledby="upload_excel_stocks_tab" class="tab-pane fade px-4 pt-4">
 						<!-- insert new file input form here -->
 						<div class="fu-wrapper">
-							<form action="#" class="fu-form">
-								<input class="file-input" type="file" name="file" hidden>
-								<i class="fas fa-cloud-upload-alt"></i>
-								<p>Browse the Excel File to Upload</p>
-							</form>
-							<section class="progress-area"></section>
-							<section class="uploaded-area"></section>
+							<form action="{{ route('batch_upload_stocks') }}" class="fu-form"method="POST" enctype="multipart/form-data">
+								@csrf
+								<div class="div-fu-form">
+									<input class="file-input" type="file" name="file" hidden>
+									<i class="fas fa-cloud-upload-alt"></i>
+									<p>Browse the Excel File to Upload</p>
+								</div>
+								<section class="progress-area"></section>
+								<section class="uploaded-area"></section>
+
+								<!-- form buttons -->
+								<div class="mt-3 mb-5 pull-right">
+									<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
+									<button type="submit" class="btn btn-primary"> Upload</button>
+								</div>
+								<!-- end form buttons -->
+								<!-- button submit and close -->
+							</form> <!-- end form -->
 						</div>
+						
 					</div>
 					<!-- End rounded tabs -->
 				</div>
