@@ -13,7 +13,7 @@ class Stock extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'stock_code','description','unit','expense_category','reorderpoint'
+        'stock_code','description','unit','expense_category'
     ];
 
     public $timestamps = false;

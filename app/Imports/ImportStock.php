@@ -20,7 +20,6 @@ class ImportStock implements ToModel
             'description' => $row[1],
             'unit' => $row[2],
             'expense_category' => $row[3],
-            'reorderpoint' => '',
         ]);
     }
 }

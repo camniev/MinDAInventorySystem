@@ -36,6 +36,9 @@
 </style>
 
 <div class="content-wrapper" style="padding: 0px 24px 0px 24px;">
+	@if(session()->has('message'))
+    	<div class="alert alert-success">{{ session('message') }}</div>
+    @endif
 
 <!-- <div class="content-wrapper" style="margin-left: 20px;"> -->
     	<!-- <div class="content-header" style="color: #084B8A; font-family: 'Calibri'; font-size: 30px;"><Strong>STOCKS LIBRARY</Strong></div> -->
@@ -169,60 +172,64 @@
 			</div>
 			<div class="modal-body px-5">
 				<!-- Rounded tabs -->
-				<ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
-					<li class="nav-item flex-sm-fill">
-						<a id="encode_ind_stocks_tab" data-toggle="tab" href="#encode_ind_stocks" role="tab" aria-controls="encode_ind_stocks" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active"> Input Individual Stock</a>
-					</li>
-					<li class="nav-item flex-sm-fill">
-						<a id="upload_excel_stocks_tab" data-toggle="tab" href="#upload_excel_stocks" role="tab" aria-controls="upload_excel_stocks" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Upload List of Stocks</a>
-					</li>
-				</ul>
-				<div id="myTabContent" class="tab-content">
-					<div id="encode_ind_stocks" role="tabpanel" aria-labelledby="encode_ind_stocks_tab" class="tab-pane fade px-4 py-5 show active">
-						<div class="form-group">
-							<label for="firstName">STOCK CODE</label>
-							<input type="text" class="form-control" name="stock_code" id="stock_code">
-						</div>
+				<form action="{{ route('upload_individual_stocks') }}" method="post">
+					@csrf
+					<ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+						<li class="nav-item flex-sm-fill">
+							<a id="encode_ind_stocks_tab" data-toggle="tab" href="#encode_ind_stocks" role="tab" aria-controls="encode_ind_stocks" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active"> Input Individual Stock</a>
+						</li>
+						<li class="nav-item flex-sm-fill">
+							<a id="upload_excel_stocks_tab" data-toggle="tab" href="#upload_excel_stocks" role="tab" aria-controls="upload_excel_stocks" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Upload List of Stocks</a>
+						</li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div id="encode_ind_stocks" role="tabpanel" aria-labelledby="encode_ind_stocks_tab" class="tab-pane fade px-4 py-5 show active">
+							<div class="form-group">
+								<label for="firstName">STOCK CODE</label>
+								<input type="text" class="form-control" name="stock_code" id="stock_code">
+							</div>
 
-						<!-- textarea -->
-						<div class="form-group">
-							<label>DESCRIPTION</label>
-							<textarea class="form-control" rows="3" name="description" id="description"></textarea>
-						</div>
+							<!-- textarea -->
+							<div class="form-group">
+								<label>DESCRIPTION</label>
+								<textarea class="form-control" rows="3" name="description" id="description"></textarea>
+							</div>
 
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>UNIT</label>
-									<select class="form-control select2" style="width: 100%;">
-										<option value="" selected disabled>Select a unit</option>
-										<option>ream</option>
-										<option>piece</option>
-										<option>set</option>
-										<option>cart</option>
-										<option>roll</option>
-									</select>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>UNIT</label>
+										<select class="form-control select2" name="unit" style="width: 100%;">
+											<option value="" selected disabled>Select a unit</option>
+											<option>ream</option>
+											<option>piece</option>
+											<option>set</option>
+											<option>cart</option>
+											<option>roll</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>EXPENSE CATEGORY</label>
+										<select class="form-control select2" name="expense_category" style="width: 100%;">
+											<option value="" selected disabled>Select an expense category</option>
+											<option>Office Supplies</option>
+											<option>ICT Supplies</option>
+											<option>Other Supplies Inventory</option>
+											<option>Semi-expendable ICT Equipment</option>
+										</select>
+									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>EXPENSE CATEGORY</label>
-									<select class="form-control select2" style="width: 100%;">
-										<option value="" selected disabled>Select an expense category</option>
-										<option>Office Supplies</option>
-										<option>ICT Supplies</option>
-										<option>Other Supplies Inventory</option>
-										<option>Semi-expendable ICT Equipment</option>
-									</select>
-								</div>
+							<!-- form buttons -->
+							<div class="mt-3 mb-5 pull-right">
+								<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
+								<button type="submit" class="btn btn-primary"> Save</button>
 							</div>
-						</div>
-						<!-- form buttons -->
-						<div class="mt-3 mb-5 pull-right">
-							<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
-							<button type="submit" class="btn btn-primary"> Save</button>
-						</div>
-						<!-- end form buttons -->
+							<!-- end form buttons -->
+						</form>
+						<!-- end form -->
 					</div>
 					<div id="upload_excel_stocks" role="tabpanel" aria-labelledby="upload_excel_stocks_tab" class="tab-pane fade px-4 pt-4">
 						<!-- insert new file input form here -->
