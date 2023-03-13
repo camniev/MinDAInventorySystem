@@ -1,6 +1,6 @@
 <header class="main-header">
     <div class="logo">
-      <span class="logo-lg"><b>Inventory System</span>
+      <span class="logo-lg">Inventory System</span>
     </div>
   <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->

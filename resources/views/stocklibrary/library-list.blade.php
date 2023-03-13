@@ -37,7 +37,16 @@
 
 <div class="content-wrapper" style="padding: 0px 24px 0px 24px;">
 	@if(session()->has('message'))
-    	<div class="alert alert-success">{{ session('message') }}</div>
+		<div id="update-snackbar"><i class="fa fa-check"></i> {{ session('message') }}</div>
+		<script>
+			function updateSnackbarFunction() {
+				var x = document.getElementById("update-snackbar");
+				x.className = "show-update";
+				setTimeout(function(){ x.className = x.className.replace("show-update", ""); }, 3000);
+			}
+
+			updateSnackbarFunction();
+		</script>
     @endif
 
 <!-- <div class="content-wrapper" style="margin-left: 20px;"> -->
@@ -502,67 +511,12 @@ $(document).ready(function() {
 	function export_excel()
 	{
 		window.location = "{{ url('/export-excel-library-list') }}";
-		
 	}
 
 
 	function addStocksModal() {
-
 		$("#addStocksModal").modal('show');
-
-    // //remove textdanger
-    // $(".text-danger").remove();
-    // //remove form-group
-    // $(".form-group").removeClass('has-error').removeClass('has-success');
-
-    // $("#addPatientsForm").unbind('submit').bind('submit', function() {
-    //   var form = $(this);
-
-    //   //remove the text-danger
-    //   $(".text-danger").remove();
-
-    //   $.ajax({
-    //     url: form.attr('action'),
-    //     type: form.attr('method'),
-    //     data: form.serialize(), //converting form data into array and sending to server
-    //     dataType: 'json',
-    //     success:function(response) {
-    //       if(response.success === true) {
-    //         $(".messages").html('<div class="alert alert-success alert-dismissable">'+
-    //           '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-    //           '<strong><span class="glyphicon glyphicon-ok-sign"> </strong> '+response.messages+
-    //           '</div>');
-    //         //hide modal
-    //           $("#addStocksModal").modal('hide');
-
-    //           //update manageMemberTable
-    //         //   scheduledCheckupsTodayTable.ajax.reload(null, false);
-    //         //   scheduledCheckupsTwoDaysTable.ajax.reload(null, false);
-    //         //   scheduledCheckupsDaysFromNowTable.ajax.reload(null, false);
-    //         //   newScheduledCheckupsTable.ajax.reload(null, false);
-    //       } else {
-    //         if(response.messages instanceof Object) {
-    //           $.each(response.messages, function(index, value) {
-    //             var id = $("#"+index);
-
-    //             id
-    //             .closest('.form-group')
-    //             .removeClass('has-error')
-    //             .removeClass('has-success')
-    //             .addClass(value.length > 0 ? 'has-error' : 'has-success')
-    //             .after(value);
-    //           });
-    //           $(".messages").html('<div class="alert alert-warning alert-dismissable">'+
-    //           '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-    //           '<strong><span class="glyphicon glyphicon-exclamation-sign"> </strong> '+'Error while adding the data'+
-    //           '</div>');
-    //         }
-    //       }
-    //     }
-    //   });
-    //   return false;
-    // });
-  }
+  	}
 
 </script>
 

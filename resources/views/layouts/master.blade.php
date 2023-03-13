@@ -56,10 +56,12 @@
     <script src="{{ asset('js/lightbox.js') }}" defer></script>
 
      <style type="text/css"> 
+        * { 
+          font-family: 'Poppins', Arial, sans-serif;
+        }
 
        body
        {
-          font-family: 'Poppins', Arial, sans-serif;
           font-size: 11px;
           font-weight: normal !important;
        }
@@ -239,6 +241,47 @@
     .btn-blank {
       color: #444;
       border-color: 0px;
+    }
+
+    #update-snackbar {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #51a954;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 16px;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      z-index: 1;
+      font-size: 17px;
+    }
+
+    #update-snackbar.show-update {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+      from {top: 0; opacity: 0;} 
+      to {top: 70px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+      from {top: 0; opacity: 0;}
+      to {top: 70px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+      from {top: 70px; opacity: 1;} 
+      to {top: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+      from {top: 70px; opacity: 1;}
+      to {top: 0; opacity: 0;}
     }
     
      </style>
