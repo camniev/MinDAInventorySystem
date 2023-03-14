@@ -42,7 +42,7 @@
     font-size: 16px;
   }
   
-  section .row{
+  section .row-upload{
     margin-bottom: 10px;
     background: #eaffe4;
     list-style: none;
@@ -52,14 +52,14 @@
     align-items: center;
     justify-content: space-between;
   }
-  section .row i{
+  section .row-upload i{
     color: #1d9e5d;
     font-size: 30px;
   }
   section .details span{
     font-size: 14px;
   }
-  .progress-area .row .fu-content{
+  .progress-area .row-upload .fu-content{
     width: 100%;
     margin-left: 15px;
   }
@@ -92,16 +92,16 @@
   .uploaded-area::-webkit-scrollbar{
     width: 0px;
   }
-  .uploaded-area .row .fu-content{
+  .uploaded-area .row-upload .fu-content{
     display: flex;
     align-items: center;
   }
-  .uploaded-area .row .details{
+  .uploaded-area .row-upload .details{
     display: flex;
     margin-left: 15px;
     flex-direction: column;
   }
-  .uploaded-area .row .details .size{
+  .uploaded-area .row-upload .details .size{
     color: #404040;
     font-size: 11px;
   }

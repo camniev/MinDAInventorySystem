@@ -43,6 +43,10 @@
       @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
     </style>
 
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css')}}"> -->
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -290,13 +294,13 @@
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
 
-    @include('backend.header')
+    @include('partials.header')
       
-    @include('backend.sidebar')
+    @include('partials.sidebar')
 
     @yield('content')
 
-    @include('backend.footer')
+    @include('partials.footer')
   </div>
 </body>
 
@@ -308,6 +312,13 @@
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 
 <script src="{{ asset('css/iCheck/icheck.min.js') }}"></script>
+
+<!-- DataTable JS -->
+<script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<!-- <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+
+<script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script> -->
+
 <script>
   //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({

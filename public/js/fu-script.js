@@ -15,7 +15,7 @@ fileInput.onchange = ({target})=>{
   let file = target.files[0]; //getting file [0] this means if user has selected multiple files then get first one only
   if(file){
     let fileName = file.name; //getting file name
-    if(fileName.length >= 15){ //if file name length is greater than 12 then split it and add ...
+    if(fileName.length >= 12){ //if file name length is greater than 12 then split it and add ...
       let splitName = fileName.split('.');
       fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
     }
@@ -33,7 +33,7 @@ function uploadFile(name){
     let fileSize;
     // if file size is less than 1024 then add only KB else convert this KB into MB
     (fileTotal < 1024) ? fileSize = fileTotal + " KB" : fileSize = (loaded / (1024*1024)).toFixed(2) + " MB";
-    let progressHTML = `<li class="row">
+    let progressHTML = `<li class="row-upload">
                           <i class="fas fa-file-alt"></i>
                           <div class="fu-content">
                             <div class="details">
@@ -50,15 +50,15 @@ function uploadFile(name){
     progressArea.innerHTML = progressHTML;
     if(loaded == total){
       progressArea.innerHTML = "";
-      let uploadedHTML = `<li class="row">
+      let uploadedHTML = `<li class="row-upload">
                             <div class="fu-content upload">
                               <i class="fas fa-file-excel-o"></i>
                               <div class="details">
-                                <span class="name">${name} • Uploaded</span>
+                                <span class="name">${name} • Ready for Upload</span>
                                 <span class="size">${fileSize}</span>
                               </div>
                             </div>
-                            <i class="fas fa-check"></i>
+                            <i class="fas fa-upload"></i>
                           </li>`;
       uploadedArea.classList.remove("onprogress");
       uploadedArea.innerHTML = uploadedHTML; //uncomment this line if you don't want to show upload history
