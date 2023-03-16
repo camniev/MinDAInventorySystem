@@ -54,14 +54,8 @@
 										<td>{{ $stock->expense_category }}</td>
 										<td>{{ $stock->reorderpoint }}</td>
 										<td>
-											<form action="#" method="POST" class="pull-right">
-												@csrf 
-												<button class="btn btn-danger"><i class="fa fa-trash"></i></button>
-											</form>
-											<a href="#" class="pull-right">
-												<button class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></button>
-											</a>
-											
+											<a href="#" class="btn btn-warning edit-ind-stock" data-id="{{ $stock->id }}"><i class="fa fa-pencil-square-o"></i></a>
+											<a href="#" class="btn btn-danger delete-ind-stock" data-id="{{ $stock->id }}"><i class="fa fa-trash"></i></a>
 										</td>
 									</tr>
 								@endforeach
@@ -134,26 +128,24 @@
 				<h4 class="modal-title mt-4">Add New Stocks</h4>
 			</div>
 			<div class="modal-body px-5">
-				<!-- Rounded tabs -->
-				<form action="{{ route('upload_individual_stocks') }}" method="post">
-					@csrf
-					<ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
-						<li class="nav-item flex-sm-fill">
-							<a id="encode_ind_stocks_tab" data-toggle="tab" href="#encode_ind_stocks" role="tab" aria-controls="encode_ind_stocks" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active"> Input Individual Stock</a>
-						</li>
-						<li class="nav-item flex-sm-fill">
-							<a id="upload_excel_stocks_tab" data-toggle="tab" href="#upload_excel_stocks" role="tab" aria-controls="upload_excel_stocks" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Upload List of Stocks</a>
-						</li>
-					</ul>
-					<div id="myTabContent" class="tab-content">
-						<div id="encode_ind_stocks" role="tabpanel" aria-labelledby="encode_ind_stocks_tab" class="tab-pane fade px-4 py-5 show active">
+				<ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav"> <!-- Rounded tabs -->
+					<li class="nav-item flex-sm-fill">
+					<a id="encode_ind_stocks_tab" data-toggle="tab" href="#encode_ind_stocks" role="tab" aria-controls="encode_ind_stocks" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active"> Input Individual Stock</a>
+					</li>
+					<li class="nav-item flex-sm-fill">
+					<a id="upload_excel_stocks_tab" data-toggle="tab" href="#upload_excel_stocks" role="tab" aria-controls="upload_excel_stocks" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Upload List of Stocks</a>
+					</li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					<div id="encode_ind_stocks" role="tabpanel" aria-labelledby="encode_ind_stocks_tab" class="tab-pane fade px-4 py-5 show active">
+						<form action="{{ route('upload_individual_stocks') }}" method="post">
+						@csrf
 							<div class="form-group">
 								<label for="firstName">STOCK CODE</label>
 								<input type="text" class="form-control" name="stock_code" id="stock_code">
 							</div>
 
-							<!-- textarea -->
-							<div class="form-group">
+							<div class="form-group"> <!-- textarea -->
 								<label>DESCRIPTION</label>
 								<textarea class="form-control" rows="3" name="description" id="description"></textarea>
 							</div>
@@ -161,68 +153,137 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>UNIT</label>
-										<select class="form-control select2" name="unit" style="width: 100%;">
-											<option value="" selected disabled>Select a unit</option>
-											<option>ream</option>
-											<option>piece</option>
-											<option>set</option>
-											<option>cart</option>
-											<option>roll</option>
-										</select>
+									<label>UNIT</label>
+									<select class="form-control select2" name="unit" style="width: 100%;">
+									<option value="" selected disabled>Select a unit</option>
+									<option value="ream">ream</option>
+									<option value="piece">piece</option>
+									<option value="set">set</option>
+									<option value="cart">cart</option>
+									<option value="roll">roll</option>
+									<option value="unit">unit</option>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>EXPENSE CATEGORY</label>
-										<select class="form-control select2" name="expense_category" style="width: 100%;">
-											<option value="" selected disabled>Select an expense category</option>
-											<option>Office Supplies</option>
-											<option>ICT Supplies</option>
-											<option>Other Supplies Inventory</option>
-											<option>Semi-expendable ICT Equipment</option>
-										</select>
+									<label>EXPENSE CATEGORY</label>
+									<select class="form-control select2" name="expense_category" style="width: 100%;">
+										<option value="" selected disabled>Select an expense category</option>
+										<option>Office Supplies</option>
+										<option>ICT Supplies</option>
+										<option>Other Supplies Inventory</option>
+										<option>Semi-expendable ICT Equipment</option>
+									</select>
 									</div>
 								</div>
 							</div>
-							<!-- form buttons -->
-							<div class="mt-3 mb-5 pull-right">
+						
+							<div class="mt-3 mb-5 pull-right"> <!-- form buttons -->
 								<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
 								<button type="submit" class="btn btn-primary"> Save</button>
-							</div>
-							<!-- end form buttons -->
-						</form>
-						<!-- end form -->
+							</div> <!-- end form buttons -->
+						
+						</form> <!-- end form -->
 					</div>
+
 					<div id="upload_excel_stocks" role="tabpanel" aria-labelledby="upload_excel_stocks_tab" class="tab-pane fade px-4 pt-4">
-						<!-- insert new file input form here -->
 						<div class="fu-wrapper">
 							<form action="{{ route('batch_upload_stocks') }}" class="fu-form"method="POST" enctype="multipart/form-data">
-								@csrf
-								<div class="div-fu-form">
+							@csrf
+								<div class="div-fu-form"> <!-- browse file div -->
 									<input class="file-input" type="file" name="file" hidden>
 									<i class="fas fa-cloud-upload-alt"></i>
 									<p>Browse the Excel File to Upload</p>
-								</div>
+								</div> <!-- end browse file div -->
 								<section class="progress-area"></section>
 								<section class="uploaded-area"></section>
 
-								<!-- form buttons -->
-								<div class="mt-3 mb-5 pull-right">
+								<div class="mt-3 mb-5 pull-right"> <!-- form buttons -->
 									<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
 									<button type="submit" class="btn btn-primary"> Upload</button>
-								</div>
-								<!-- end form buttons -->
-								<!-- button submit and close -->
+								</div> <!-- end form buttons -->
+							
+							<!-- button submit and close -->
 							</form> <!-- end form -->
 						</div>
-						
-					</div>
-					<!-- End rounded tabs -->
+					</div> <!-- End excel upload tab -->
 				</div>
-			<div class="modal-footer">
+				<div class="modal-footer">
 				<!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
 				<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Save</button> -->
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<!-- new modal for EDITING stocks -->
+<div id="editStocksModal" class="modal fade modal-default" role="dialog">
+	<div class="modal-dialog modal-xl modal-dialog-centered">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title mt-4">Edit Stocks</h4>
+			</div>
+			<div class="modal-body px-5">
+				<form action="#" method="post">
+					@csrf
+					<div class="form-group d-none">
+						<label for="stock_id">ID</label>
+						<input type="text" class="form-control" name="stock_id" id="edit_stock_id">
+					</div>
+
+					<div class="form-group">
+						<label for="firstName">STOCK CODE</label>
+						<input type="text" class="form-control" name="stock_code" id="edit_stock_code">
+					</div>
+
+					<!-- textarea -->
+					<div class="form-group">
+						<label>DESCRIPTION</label>
+						<textarea class="form-control" rows="3" name="description" id="edit_description"></textarea>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>UNIT</label>
+								<select class="form-control select2" name="edit_unit" style="width: 100%;">
+									<option value="" selected disabled>Select a unit</option>
+									<option>ream</option>
+									<option>piece</option>
+									<option>set</option>
+									<option>cart</option>
+									<option>roll</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>EXPENSE CATEGORY</label>
+								<select class="form-control select2" name="edit_expense_category" style="width: 100%;">
+									<option value="" selected disabled>Select an expense category</option>
+									<option>Office Supplies</option>
+									<option>ICT Supplies</option>
+									<option>Other Supplies Inventory</option>
+									<option>Semi-expendable ICT Equipment</option>
+								</select>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="modal-footer">
+					<!-- form buttons -->
+					<div class="mt-3 mb-5 pull-right">
+							<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
+							<button type="submit" class="btn btn-primary"> Save</button>
+					</div>
+					<!-- end form buttons -->
+				</form>
+				<!-- end form -->
 			</div>
 		</div>
 	</div>
@@ -279,7 +340,7 @@
 
 <script type="text/javascript">
 	//OPEN EDIT MODAL WITH DATA
-	$(document).on("click", ".edit_stock" , function(e) {
+	$(document).on("click", ".edit-stock" , function(e) {
 		var id = $(this).attr("id"); 
 
 		url = "{{ url('/supplies-summary/get-stock') }}/"+id;
@@ -406,6 +467,26 @@
 		$("#addStocksModal").modal('show');
 	}
 
+	//OPEN EDIT MODAL WITH DATA
+	$(document).on("click", ".edit-ind-stock" , function(e) {
+		var stock_id = $(this).attr("data-id"); 
+
+		$.ajax({
+			url: "{{ url('/supplies-summary/get-stock') }}/" + stock_id,
+			type: 'get',
+			dataType: 'json',
+			success:function(response) {
+				console.log(response);
+				$('#edit_stock_id').val(response.id);
+				$('#edit_stock_code').val(response.stock_code);
+				$('#edit_description').val(response.description);
+				$('#edit_unit').val(response.unit);
+				$('#edit_expense_category').val(response.expense_category);
+				$("#editStocksModal").modal('show');
+			}
+		});
+	});
+
 	//loading datatable
 	$(document).ready(function() {
         $('#stocksTable').DataTable({
@@ -419,6 +500,8 @@
 		]
 		})
     })
+
+
 </script>
 
 @endsection

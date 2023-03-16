@@ -46,15 +46,27 @@ class StockLibraryController extends Controller
         return view('stocklibrary.stock-library-list',compact('data','reorderdata'));
     }
 
+    // public function get_stock($id)
+    // {
+    //     if(request()->ajax())
+    //     {
+    //         $data = DB::table('stock_libs')
+    //                 ->where(['stock_libs.id'=>$id])
+    //                 ->get();
+
+    //         $data = Stock::find($)
+
+    //         return response()->JSON(['data'=>$data]);
+    //     }
+    // }
+
+    //refactored get_stock() - getting details of a stock for edit
     public function get_stock($id)
     {
         if(request()->ajax())
         {
-            $data = DB::table('stock_libs')
-                    ->where(['stock_libs.id'=>$id])
-                    ->get();
-
-            return response()->JSON(['data'=>$data]);
+            $data = Stock::find($id);
+            return response()->json($data);
         }
     }
 
