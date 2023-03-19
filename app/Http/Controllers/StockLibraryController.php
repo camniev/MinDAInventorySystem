@@ -37,10 +37,12 @@ class StockLibraryController extends Controller
                 ->groupBy('stock_libs.stock_code')
                 ->get();
 
-        $data = DB::table('stock_libs')
-                ->orderBy('stock_libs.stock_code','asc')
-                ->paginate(10)
-                ->onEachSide(2);
+        // $data = DB::table('stock_libs')
+        //         ->orderBy('stock_libs.stock_code','asc')
+        //         ->paginate(10)
+        //         ->onEachSide(2);
+
+        $data = Stock::all();
 
         $distinct_unit = Stock::distinct()->get(['unit']);
         $distinct_expense_category = Stock::distinct()->get(['expense_category']);
@@ -136,13 +138,15 @@ class StockLibraryController extends Controller
         return view('stocklibrary.re-order-list',compact('data','reorderdata'));
     }
 
-    public function remove_stock(Request $request, $id)
+    public function remove_stock(Request $request)
     {
-        $r_id = $request->get('d_id');
+        // $r_id = $request->get('d_id');
 
-        $data = DB::table('stock_libs')
-                ->where(['stock_libs.id'=>$id])
-                ->delete();
+        // $data = DB::table('stock_libs')
+        //         ->where(['stock_libs.id'=>$id])
+        //         ->delete();
+
+        $stock = Stock::find($request->id)->delete();
 
         return redirect('/library')->with('alert','Stock deleted');
     }

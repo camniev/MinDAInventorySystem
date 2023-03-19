@@ -123,9 +123,10 @@ class SettingsController extends Controller
                 ->groupBy('stock_libs.stock_code')
                 ->get();
 
-        $data = DB::table('stock_libs')
-                ->orderBy('stock_libs.id','desc')
-                ->paginate(50);
+        // $data = DB::table('stock_libs')
+        //         ->orderBy('stock_libs.id','desc')
+        //         ->paginate(50);
+        $data = Stock::all();
 
         $distinct_unit = Stock::distinct()->get(['unit']);
         $distinct_expense_category = Stock::distinct()->get(['expense_category']);

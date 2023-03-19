@@ -428,19 +428,19 @@
 
 	//DELETE STOCK
 	$(document).ready(function() {
-		$(document).on("click",".delete_stock", function(e){
+		$(document).on("click",".delete-ind-stock", function(e){
 		var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
-		var deleteid  = $(this).attr("id"); 
+		var stock_id = $(this).attr("data-id"); 
 
 		//var confirmation = confirm("Are you sure you want to remove/delete this stock item?");
 
 			if (confirm('Are you sure you want to remove/delete this stock item?')) {
 					$.ajax({
-						url: "{{ url('/library/remove-stock') }}/'"+deleteid,
-						type: "POST",
-						data: {d_id: deleteid},
+						url: "{{ url('/library/remove-stock') }}/"+stock_id,
+						type: "GET",
+						data: {d_id: stock_id},
 						success: function () {
-							tempAlert("Stock information deleted.",2000);
+							console.log('success');
 						},
 						error: function(){
 							alert("Error processing request, please try again");
@@ -454,7 +454,6 @@
 
 
 	//CAMERON
-
 	//opening new stocks modal
 	function addStocksModal() {
 		$.ajax({
