@@ -41,7 +41,6 @@
 									<th scope="col">DESCRIPTION</th>
 									<th scope="col">UNIT</th>
 									<th scope="col">EXPENSE CATEGORY</th>
-									<th scope="col">RE-ORDER POINT</th>
 									<th scope="col">ACTION</th>
 								</tr>
 							</thead>
@@ -52,7 +51,6 @@
 										<td>{{ $stock->description }}</td>
 										<td>{{ $stock->unit }}</td>
 										<td>{{ $stock->expense_category }}</td>
-										<td>{{ $stock->reorderpoint }}</td>
 										<td>
 											<a href="#" class="btn btn-warning edit-ind-stock" data-id="{{ $stock->id }}"><i class="fa fa-pencil-square-o"></i></a>
 											<a href="#" class="btn btn-danger delete-ind-stock" data-id="{{ $stock->id }}"><i class="fa fa-trash"></i></a>
@@ -156,12 +154,9 @@
 									<label>UNIT</label>
 									<select class="form-control select2" name="unit" style="width: 100%;">
 									<option value="" selected disabled>Select a unit</option>
-									<option value="ream">ream</option>
-									<option value="piece">piece</option>
-									<option value="set">set</option>
-									<option value="cart">cart</option>
-									<option value="roll">roll</option>
-									<option value="unit">unit</option>
+									@foreach($distinct_unit as $data) 
+										<option value="{{ $data->unit }}">{{ $data->unit }}</option>
+									@endforeach
 									</select>
 									</div>
 								</div>
@@ -170,10 +165,9 @@
 									<label>EXPENSE CATEGORY</label>
 									<select class="form-control select2" name="expense_category" style="width: 100%;">
 										<option value="" selected disabled>Select an expense category</option>
-										<option>Office Supplies</option>
-										<option>ICT Supplies</option>
-										<option>Other Supplies Inventory</option>
-										<option>Semi-expendable ICT Equipment</option>
+										@foreach($distinct_expense_category as $data) 
+										<option value="{{ $data->expense_category }}">{{ $data->expense_category }}</option>
+										@endforeach
 									</select>
 									</div>
 								</div>
@@ -251,21 +245,20 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>UNIT</label>
-								<select class="form-control select2" name="edit_unit" style="width: 100%;">
-									<option value="" selected disabled>Select a unit</option>
-									<option>ream</option>
-									<option>piece</option>
-									<option>set</option>
-									<option>cart</option>
-									<option>roll</option>
+								<select class="form-control select2" id="edit_unit" name="edit_unit" style="width: 100%;">
+									<option value="REAM">ream</option>
+									<option value="PIECE">piece</option>
+									<option value="SET">set</option>
+									<option value="CART">cart</option>
+									<option value="ROLL">roll</option>
+									<option value="UNIT">unit</option>
 								</select>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>EXPENSE CATEGORY</label>
-								<select class="form-control select2" name="edit_expense_category" style="width: 100%;">
-									<option value="" selected disabled>Select an expense category</option>
+								<select class="form-control select2" id="edit_expense_category" name="edit_expense_category" style="width: 100%;">
 									<option>Office Supplies</option>
 									<option>ICT Supplies</option>
 									<option>Other Supplies Inventory</option>
@@ -464,6 +457,9 @@
 
 	//opening new stocks modal
 	function addStocksModal() {
+		$.ajax({
+			
+		});
 		$("#addStocksModal").modal('show');
 	}
 
@@ -476,13 +472,14 @@
 			type: 'get',
 			dataType: 'json',
 			success:function(response) {
-				console.log(response);
+				$("#editStocksModal").modal('show');
 				$('#edit_stock_id').val(response.id);
 				$('#edit_stock_code').val(response.stock_code);
 				$('#edit_description').val(response.description);
-				$('#edit_unit').val(response.unit);
-				$('#edit_expense_category').val(response.expense_category);
-				$("#editStocksModal").modal('show');
+				document.getElementById("select2-edit_unit-container").innerHTML = response.unit;
+				$('#edit_unit option[value="'+response.unit+'"]').prop('selected', true);
+				document.getElementById("select2-edit_expense_category-container").innerHTML = response.expense_category;
+				$('#edit_expense_category option[value="'+response.expense_category+'"]').prop('selected', true);
 			}
 		});
 	});
@@ -491,13 +488,11 @@
 	$(document).ready(function() {
         $('#stocksTable').DataTable({
 			"columns": [
-			null,
-			null,
-			null,
-			null,
-			null,
-			{ "width": "5%" }
-		]
+			{ "width": "15%" },
+			{ "width": "30%" },
+			{ "width": "10%" },
+			{ "width": "30%" },
+			{ "width": "5%" }]
 		})
     })
 

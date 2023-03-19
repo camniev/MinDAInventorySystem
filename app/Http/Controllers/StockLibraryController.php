@@ -24,7 +24,6 @@ class StockLibraryController extends Controller
 	    				->get();
 
 	    	return response()->JSON(['data'=>$items]);
-
 	    }
     }
 
@@ -43,7 +42,10 @@ class StockLibraryController extends Controller
                 ->paginate(10)
                 ->onEachSide(2);
 
-        return view('stocklibrary.stock-library-list',compact('data','reorderdata'));
+        $distinct_unit = Stock::distinct()->get(['unit']);
+        $distinct_expense_category = Stock::distinct()->get(['expense_category']);
+
+        return view('stocklibrary.stock-library-list',compact('data','reorderdata','distinct_unit','distinct_expense_category'));
     }
 
     // public function get_stock($id)
@@ -145,6 +147,7 @@ class StockLibraryController extends Controller
         return redirect('/library')->with('alert','Stock deleted');
     }
 
+    //CAMERON
     public function batchUploadStocks(Request $request) {
         Excel::import(new ImportStock, $request->file('file')->store('files'));
         return redirect()->back()->with(['message' => 'Uploaded successfully.']);

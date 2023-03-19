@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\SignSetting;
+use App\Stock;
 
 class SettingsController extends Controller
 {
@@ -126,8 +127,10 @@ class SettingsController extends Controller
                 ->orderBy('stock_libs.id','desc')
                 ->paginate(50);
 
+        $distinct_unit = Stock::distinct()->get(['unit']);
+        $distinct_expense_category = Stock::distinct()->get(['expense_category']);
 
-        return view('stocklibrary.library-list',compact('reorderdata','data'));
+        return view('stocklibrary.library-list',compact('reorderdata','data','distinct_unit','distinct_expense_category'));
     }
 
     public function save_new_stock(Request $request)

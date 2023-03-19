@@ -182,7 +182,7 @@
     }
   </style>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center d-flex">
         <div class="col-md-10">
             <div class="card mg0-pd0">
                 <div class="cbody">
