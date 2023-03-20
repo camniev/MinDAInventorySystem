@@ -223,7 +223,7 @@
 				<h4 class="modal-title mt-4">Edit Stocks</h4>
 			</div>
 			<div class="modal-body px-5">
-				<form action="#" method="post">
+				<form action="#">
 					@csrf
 					<div class="form-group d-none">
 						<label for="stock_id">ID</label>
@@ -268,7 +268,7 @@
 					<!-- form buttons -->
 					<div class="mt-3 mb-5 pull-right">
 							<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
-							<button type="submit" class="btn btn-primary"> Save</button>
+							<button type="submit" class="btn btn-primary new_update_stock"> Save</button>
 					</div>
 					<!-- end form buttons -->
 				</form>
@@ -468,19 +468,18 @@
 		});
 	});
 
-	//DELETE STOCK
+	//new delete stock
 	$(document).ready(function() {
 		$(document).on("click",".delete-ind-stock", function(e){
 			var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
-			var stock_id = $(this).attr("data-id"); 
+			var id = $(this).attr("data-id"); 
 			if (confirm('Are you sure you want to remove/delete this stock item?')) {
 				$.ajax({
-					url: "{{ url('/library/remove-stock') }}/" + stock_id,
-					type: "GET",
-					data: {d_id: stock_id},
+					url: "{{ url('/library/remove_stock') }}/" + id,
+					type: "POST",
+					data: {_token: CSRF_TOKEN, id: id},
 					success: function () {
 						console.log('success');
-						updateSnackbarFunction();
 					},
 					error: function(){
 						alert("Error processing request, please try again");
@@ -489,6 +488,42 @@
 			}
 			event.preventDefault();
 		});
+	});
+
+	//new update stock
+	$(document).on("click",".new_update_stock",function(e){
+		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+		var id = $('#edit_stock_id').val();
+
+		var edit_stock_code = $('#edit_stock_code').val();
+		var edit_stock_description 	= $('#edit_description').val();
+		var edit_unit = $('#edit_unit').find(":selected").val();
+		var edit_expense_category = $('#edit_expense_category').find(":selected").val();
+
+		console.log(id + " " + edit_stock_code + " " + edit_stock_description + " " + edit_unit + " " + edit_expense_category);
+
+		$.ajax({
+			url: "{{ url('/library/update_ind_stock') }}/" + id,
+			type: "POST",
+			data: { _token: CSRF_TOKEN, 
+					stock_code: edit_stock_code,
+					description: edit_stock_description, 
+					unit: edit_unit, 
+					expense_category: edit_expense_category
+				},
+			success: function(response) {
+				console.log('update success');
+				// response = JSON.parse(JSON.stringify(response))
+
+				// tempAlert("Changes successfully save.",2000);
+				// $('#item-edit-modal').modal('hide');
+				// window.location.reload();
+			}, error: function(response) {
+				alert(response);
+			}
+		});
+		e.preventDefault();
+
 	});
 
 

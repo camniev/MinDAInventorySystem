@@ -6,6 +6,7 @@ use App\Imports\ImportStock;
 use App\Stock;
 use Illuminate\Http\Request;
 use DB;
+use Facade\FlareClient\Http\Response;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StockLibraryController extends Controller
@@ -42,6 +43,7 @@ class StockLibraryController extends Controller
         //         ->paginate(10)
         //         ->onEachSide(2);
 
+        //CAMERON - refactored query; used laravel eloquent
         $data = Stock::all();
 
         $distinct_unit = Stock::distinct()->get(['unit']);
@@ -64,7 +66,7 @@ class StockLibraryController extends Controller
     //     }
     // }
 
-    //refactored get_stock() - getting details of a stock for edit
+    //CAMERON refactored get_stock() - getting details of a stock for edit
     public function get_stock($id)
     {
         if(request()->ajax())
@@ -146,6 +148,7 @@ class StockLibraryController extends Controller
         //         ->where(['stock_libs.id'=>$id])
         //         ->delete();
 
+        //CAMERON REFACTOR
         $stock = Stock::find($request->id)->delete();
 
         return redirect('/library')->with(['message' => 'Deleted successfully.']);
@@ -160,5 +163,13 @@ class StockLibraryController extends Controller
     public function addIndividualStock(Request $request) {
         Stock::create($request->all());
         return redirect()->back()->with(['message' => 'Saved successfully']);
+    }
+
+    public function updateStock(Request $request) {
+        if(request()->ajax()) {
+            Stock::find($request->id)->update($request->all());
+
+            return response()->json(['message' => 'Updated successfully']);
+        }
     }
 }
