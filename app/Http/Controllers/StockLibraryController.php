@@ -148,7 +148,7 @@ class StockLibraryController extends Controller
 
         $stock = Stock::find($request->id)->delete();
 
-        return redirect('/library')->with('alert','Stock deleted');
+        return redirect('/library')->with(['message' => 'Deleted successfully.']);
     }
 
     //CAMERON

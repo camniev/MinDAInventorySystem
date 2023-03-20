@@ -246,12 +246,9 @@
 							<div class="form-group">
 								<label>UNIT</label>
 								<select class="form-control select2" id="edit_unit" name="edit_unit" style="width: 100%;">
-									<option value="REAM">ream</option>
-									<option value="PIECE">piece</option>
-									<option value="SET">set</option>
-									<option value="CART">cart</option>
-									<option value="ROLL">roll</option>
-									<option value="UNIT">unit</option>
+									@foreach($distinct_unit as $data) 
+									<option value="{{ $data->unit }}">{{ $data->unit }}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
@@ -259,10 +256,9 @@
 							<div class="form-group">
 								<label>EXPENSE CATEGORY</label>
 								<select class="form-control select2" id="edit_expense_category" name="edit_expense_category" style="width: 100%;">
-									<option>Office Supplies</option>
-									<option>ICT Supplies</option>
-									<option>Other Supplies Inventory</option>
-									<option>Semi-expendable ICT Equipment</option>
+									@foreach($distinct_expense_category as $data) 
+									<option value="{{ $data->expense_category }}">{{ $data->expense_category }}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
@@ -426,40 +422,29 @@
 
 	});
 
-	//DELETE STOCK
-	$(document).ready(function() {
-		$(document).on("click",".delete-ind-stock", function(e){
-		var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
-		var stock_id = $(this).attr("data-id"); 
-
-		//var confirmation = confirm("Are you sure you want to remove/delete this stock item?");
-
-			if (confirm('Are you sure you want to remove/delete this stock item?')) {
-					$.ajax({
-						url: "{{ url('/library/remove-stock') }}/"+stock_id,
-						type: "GET",
-						data: {d_id: stock_id},
-						success: function () {
-							console.log('success');
-						},
-						error: function(){
-							alert("Error processing request, please try again");
-						}
-					});
-				}
-
-		event.preventDefault();
-		});
-	});
-
-
 	//CAMERON
+
+	//loading datatable
+	$(document).ready(function() {
+        $('#stocksTable').DataTable({
+			"columns": [
+			{ "width": "15%" },
+			{ "width": "30%" },
+			{ "width": "10%" },
+			{ "width": "30%" },
+			{ "width": "5%" }]
+		});
+    });
+
 	//opening new stocks modal
 	function addStocksModal() {
+		$("#addStocksModal").modal('show');
+	}
+
+	function saveNewStock() {
 		$.ajax({
 			
 		});
-		$("#addStocksModal").modal('show');
 	}
 
 	//OPEN EDIT MODAL WITH DATA
@@ -483,17 +468,28 @@
 		});
 	});
 
-	//loading datatable
+	//DELETE STOCK
 	$(document).ready(function() {
-        $('#stocksTable').DataTable({
-			"columns": [
-			{ "width": "15%" },
-			{ "width": "30%" },
-			{ "width": "10%" },
-			{ "width": "30%" },
-			{ "width": "5%" }]
-		})
-    })
+		$(document).on("click",".delete-ind-stock", function(e){
+			var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
+			var stock_id = $(this).attr("data-id"); 
+			if (confirm('Are you sure you want to remove/delete this stock item?')) {
+				$.ajax({
+					url: "{{ url('/library/remove-stock') }}/" + stock_id,
+					type: "GET",
+					data: {d_id: stock_id},
+					success: function () {
+						console.log('success');
+						updateSnackbarFunction();
+					},
+					error: function(){
+						alert("Error processing request, please try again");
+					}
+				});
+			}
+			event.preventDefault();
+		});
+	});
 
 
 </script>
