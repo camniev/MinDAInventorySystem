@@ -28,6 +28,11 @@ class StockLibraryController extends Controller
 	    }
     }
 
+    public function fetch_all_stocks() {
+        $data = Stock::all();
+        return response()->JSON(['data' => $data]);
+    }
+
 
     public function re_order_point()
     {

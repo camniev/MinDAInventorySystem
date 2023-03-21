@@ -305,6 +305,7 @@ Route::get('/export-excel-library-list','ReportController@library_list');
 
 Route::group(['prefix' => 'library'], function() {
 	Route::get('/', 'SettingsController@library_entry');
+	Route::get('/fetch_all_stocks', 'StockLibraryController@fetch_all_stocks');
 	Route::get('/add_new_stock', 'SettingsController@save_new_stock');
 	Route::post('/remove_stock/{id}', 'StockLibraryController@remove_stock');
 	Route::post('/batch_upload_stocks', 'StockLibraryController@batchUploadStocks')->name('batch_upload_stocks');

@@ -41,23 +41,8 @@
 									<th scope="col">DESCRIPTION</th>
 									<th scope="col">UNIT</th>
 									<th scope="col">EXPENSE CATEGORY</th>
-									<th scope="col">ACTION</th>
 								</tr>
 							</thead>
-							<tbody>
-								@foreach($data as $stock)
-									<tr>
-										<td>{{ $stock->stock_code }}</td>
-										<td>{{ $stock->description }}</td>
-										<td>{{ $stock->unit }}</td>
-										<td>{{ $stock->expense_category }}</td>
-										<td>
-											<a href="#" class="btn btn-warning edit-ind-stock" data-id="{{ $stock->id }}"><i class="fa fa-pencil-square-o"></i></a>
-											<a href="#" class="btn btn-danger delete-ind-stock" data-id="{{ $stock->id }}"><i class="fa fa-trash"></i></a>
-										</td>
-									</tr>
-								@endforeach
-							</tbody>
 						</table>
 						<!-- DataTable End-->
 					</div>
@@ -328,6 +313,7 @@
 	</div>
 
 <script type="text/javascript">
+	var allStocksTable;
 	//OPEN EDIT MODAL WITH DATA
 	$(document).on("click", ".edit-stock" , function(e) {
 		var id = $(this).attr("id"); 
@@ -426,13 +412,14 @@
 
 	//loading datatable
 	$(document).ready(function() {
-        $('#stocksTable').DataTable({
+        allStocksTable = $('#stocksTable').DataTable({
+			'ajax': '{{ url("library/fetch_all_stocks") }}',
+      		"order": [[ 1, "asc" ]],
 			"columns": [
-			{ "width": "15%" },
-			{ "width": "30%" },
-			{ "width": "10%" },
-			{ "width": "30%" },
-			{ "width": "5%" }]
+			{ "data": "stock_code", "width": "15%" },
+			{ "data": "description", "width": "30%" },
+			{ "data": "unit", "width": "10%" },
+			{ "data": "expense_category", "width": "30%" }]
 		});
     });
 
