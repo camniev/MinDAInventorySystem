@@ -156,6 +156,7 @@ class StockLibraryController extends Controller
         //CAMERON REFACTOR
         $stock = Stock::find($request->id)->delete();
 
+        //change to JSON
         return redirect('/library')->with(['message' => 'Deleted successfully.']);
     }
 

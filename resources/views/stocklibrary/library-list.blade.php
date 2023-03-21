@@ -2,19 +2,8 @@
 
 @section('content')
 <div class="content-wrapper" style="padding: 0px 24px 0px 24px;">
-	@if(session()->has('message'))
-		<div id="update-snackbar"><i class="fa fa-check"></i> {{ session('message') }}</div>
-		<script>
-			function updateSnackbarFunction() {
-				var x = document.getElementById("update-snackbar");
-				x.className = "show-update";
-				setTimeout(function(){ x.className = x.className.replace("show-update", ""); }, 3000);
-			}
-
-			updateSnackbarFunction();
-		</script>
-    @endif
-
+	
+	<div id="update-snackbar"><i class="fa fa-check"></i> <p id="notif-message"></p></div>
 	<section class="content-header">
 		<div class="newbreadcrumb">
 			<h5 class="mr-3">Library</h5>
@@ -41,6 +30,7 @@
 									<th scope="col">DESCRIPTION</th>
 									<th scope="col">UNIT</th>
 									<th scope="col">EXPENSE CATEGORY</th>
+									<th scope="col">ACTION</th>
 								</tr>
 							</thead>
 						</table>
@@ -408,7 +398,20 @@
 
 	});
 
+
+	//===========================================================
+	//===========================================================
+	//===========================================================
 	//CAMERON
+	var allStocksTable;
+
+	//snackbar/toast function
+	function updateSnackbarFunction(m) {
+		$("#notif-message").val(m);
+		var x = document.getElementById("update-snackbar");
+		x.className = "show-update";
+		setTimeout(function(){ x.className = x.className.replace("show-update", ""); }, 3000);
+	}
 
 	//loading datatable
 	$(document).ready(function() {
@@ -419,7 +422,17 @@
 			{ "data": "stock_code", "width": "15%" },
 			{ "data": "description", "width": "30%" },
 			{ "data": "unit", "width": "10%" },
-			{ "data": "expense_category", "width": "30%" }]
+			{ "data": "expense_category", "width": "30%" },
+			{ 'data': null, 
+				title: 'Action', 
+				wrap: true, 
+				"render": function (item) { 
+					return '<a href="#" class="btn btn-warning edit-ind-stock" data-id="' + item.id + '"><i class="fa fa-pencil-square-o"></i></a>&nbsp;' 
+					+ '<a href="#" class="btn btn-danger delete-ind-stock" data-id="' + item.id + '"><i class="fa fa-trash"></i></a>' 
+				}, 
+				"width": "6%" 
+			},
+			]
 		});
     });
 
@@ -465,8 +478,9 @@
 					url: "{{ url('/library/remove_stock') }}/" + id,
 					type: "POST",
 					data: {_token: CSRF_TOKEN, id: id},
-					success: function () {
-						console.log('success');
+					success: function() {
+						allStocksTable.ajax.reload(null, false);
+						updateSnackbarFunction("Item deleted successfully.");
 					},
 					error: function(){
 						alert("Error processing request, please try again");
