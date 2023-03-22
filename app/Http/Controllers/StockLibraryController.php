@@ -168,7 +168,7 @@ class StockLibraryController extends Controller
 
     public function addIndividualStock(Request $request) {
         Stock::create($request->all());
-        return redirect()->back()->with(['message' => 'Saved successfully']);
+        return response()->json(['message' => 'Saved successfully']);
     }
 
     public function updateStock(Request $request) {

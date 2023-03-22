@@ -406,7 +406,7 @@
 	var allStocksTable;
 
 	//snackbar/toast function
-	function updateSnackbarFunction(m) {
+	function updateSnackbarFunction(m, flag) {
 		$("#notif-message").val(m);
 		var x = document.getElementById("update-snackbar");
 		x.className = "show-update";
@@ -441,11 +441,35 @@
 		$("#addStocksModal").modal('show');
 	}
 
-	function saveNewStock() {
+	//saving new stock
+	$(document).on("click",".add_stock",function(e){
+		var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
+
+		var stock_code = $('#tock_code').val();
+		var stock_description 	= $('#description').val();
+		var unit = $('#unit').find(":selected").val();
+		var expense_category = $('#expense_category').find(":selected").val();
+
 		$.ajax({
-			
+		url: "{{ route('upload_individual_stocks') }}/",
+		type: "POST",
+		data: {
+			_token: CSRF_TOKEN,
+			stock_code: stock_code,
+			description: stock_description,
+			unit: unit, 
+			expense_category: expense_category
+		},
+		success: function(response) {
+			allStocksTable.ajax.reload(null, false);
+			updateSnackbarFunction("Stock added successfully.", 1);
+		}, error: function() {
+			alupdateSnackbarFunction("Error processing request, please try again", 0);
+		}
 		});
-	}
+		e.preventDefault();
+
+	});
 
 	//OPEN EDIT MODAL WITH DATA
 	$(document).on("click", ".edit-ind-stock" , function(e) {
@@ -465,29 +489,6 @@
 				document.getElementById("select2-edit_expense_category-container").innerHTML = response.expense_category;
 				$('#edit_expense_category option[value="'+response.expense_category+'"]').prop('selected', true);
 			}
-		});
-	});
-
-	//new delete stock
-	$(document).ready(function() {
-		$(document).on("click",".delete-ind-stock", function(e){
-			var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
-			var id = $(this).attr("data-id"); 
-			if (confirm('Are you sure you want to remove/delete this stock item?')) {
-				$.ajax({
-					url: "{{ url('/library/remove_stock') }}/" + id,
-					type: "POST",
-					data: {_token: CSRF_TOKEN, id: id},
-					success: function() {
-						allStocksTable.ajax.reload(null, false);
-						updateSnackbarFunction("Item deleted successfully.");
-					},
-					error: function(){
-						alert("Error processing request, please try again");
-					}
-				});
-			}
-			event.preventDefault();
 		});
 	});
 
@@ -513,18 +514,36 @@
 					expense_category: edit_expense_category
 				},
 			success: function(response) {
-				console.log('update success');
-				// response = JSON.parse(JSON.stringify(response))
-
-				// tempAlert("Changes successfully save.",2000);
-				// $('#item-edit-modal').modal('hide');
-				// window.location.reload();
+					allStocksTable.ajax.reload(null, false);
+					updateSnackbarFunction("Item updated successfully.", 1);
 			}, error: function(response) {
-				alert(response);
+				updateSnackbarFunction("Error processing request, please try again.", 0);
 			}
 		});
 		e.preventDefault();
+	});
 
+	//new delete stock
+	$(document).ready(function() {
+		$(document).on("click",".delete-ind-stock", function(e){
+			var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
+			var id = $(this).attr("data-id"); 
+			if (confirm('Are you sure you want to remove/delete this stock item?')) {
+				$.ajax({
+					url: "{{ url('/library/remove_stock') }}/" + id,
+					type: "POST",
+					data: {_token: CSRF_TOKEN, id: id},
+					success: function() {
+						allStocksTable.ajax.reload(null, false);
+						updateSnackbarFunction("Item deleted successfully.", 1);
+					},
+					error: function(){
+						updateSnackbarFunction("Error processing request, please try again.", 0);
+					}
+				});
+			}
+			event.preventDefault();
+		});
 	});
 
 
