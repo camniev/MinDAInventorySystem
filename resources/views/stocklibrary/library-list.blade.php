@@ -111,7 +111,7 @@
 				</ul>
 				<div id="myTabContent" class="tab-content">
 					<div id="encode_ind_stocks" role="tabpanel" aria-labelledby="encode_ind_stocks_tab" class="tab-pane fade px-4 py-5 show active">
-						<form action="{{ route('upload_individual_stocks') }}" method="post">
+						<form action="#">
 						@csrf
 							<div class="form-group">
 								<label for="firstName">STOCK CODE</label>
@@ -127,7 +127,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>UNIT</label>
-									<select class="form-control select2" name="unit" style="width: 100%;">
+									<select class="form-control select2" name="unit" id="unit" style="width: 100%;">
 									<option value="" selected disabled>Select a unit</option>
 									@foreach($distinct_unit as $data) 
 										<option value="{{ $data->unit }}">{{ $data->unit }}</option>
@@ -138,7 +138,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>EXPENSE CATEGORY</label>
-									<select class="form-control select2" name="expense_category" style="width: 100%;">
+									<select class="form-control select2" name="expense_category" id="expense_category" style="width: 100%;">
 										<option value="" selected disabled>Select an expense category</option>
 										@foreach($distinct_expense_category as $data) 
 										<option value="{{ $data->expense_category }}">{{ $data->expense_category }}</option>
@@ -150,7 +150,7 @@
 						
 							<div class="mt-3 mb-5 pull-right"> <!-- form buttons -->
 								<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
-								<button type="submit" class="btn btn-primary"> Save</button>
+								<button type="submit" class="btn btn-primary add-ind-stock"> Save</button>
 							</div> <!-- end form buttons -->
 						
 						</form> <!-- end form -->
@@ -303,60 +303,59 @@
 	</div>
 
 <script type="text/javascript">
-	var allStocksTable;
 	//OPEN EDIT MODAL WITH DATA
-	$(document).on("click", ".edit-stock" , function(e) {
-		var id = $(this).attr("id"); 
+	// $(document).on("click", ".edit-stock" , function(e) {
+	// 	var id = $(this).attr("id"); 
 
-		url = "{{ url('/supplies-summary/get-stock') }}/"+id;
+	// 	url = "{{ url('/supplies-summary/get-stock') }}/"+id;
 
-		$.get(url, function (data) {
-		console.log(data);
-		document.getElementById("stockcode").setAttribute('value',data.data[0].stock_code);
-		document.getElementById("stockcode").value=data.data[0].stock_code;
-		document.getElementById("stock_description").value = data.data[0].description;
-		document.getElementById("unit").setAttribute('value',data.data[0].unit);
-		document.getElementById("category").value=data.data[0].expense_category;
-		document.getElementById("reorder").setAttribute('value',data.data[0].reorderpoint);
-		document.getElementById("reorder").value=data.data[0].reorderpoint;
-		document.getElementById("st_id").setAttribute('value',id);
-		document.getElementById("st_id").value=id;
+	// 	$.get(url, function (data) {
+	// 	console.log(data);
+	// 	document.getElementById("stockcode").setAttribute('value',data.data[0].stock_code);
+	// 	document.getElementById("stockcode").value=data.data[0].stock_code;
+	// 	document.getElementById("stock_description").value = data.data[0].description;
+	// 	document.getElementById("unit").setAttribute('value',data.data[0].unit);
+	// 	document.getElementById("category").value=data.data[0].expense_category;
+	// 	document.getElementById("reorder").setAttribute('value',data.data[0].reorderpoint);
+	// 	document.getElementById("reorder").value=data.data[0].reorderpoint;
+	// 	document.getElementById("st_id").setAttribute('value',id);
+	// 	document.getElementById("st_id").value=id;
 
-		$('#item-edit-modal').modal('show');
-		});
-	});
+	// 	$('#item-edit-modal').modal('show');
+	// 	});
+	// });
 	
 	//SAVE EDIT
-	$(document).on("click",".update_stock",function(e){
-		var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
-		var id  	= $('input#st_id').val();
+	// $(document).on("click",".update_stock",function(e){
+	// 	var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
+	// 	var id  	= $('input#st_id').val();
 
-		var stcode 			= $('input#stockcode').val();
-		var stdescription 	= $('textarea#stock_description').val();
-		var stunit 			= $('input#unit').val();
-		var stcategory 		= $('textarea#category').val();
-		var streorder 		= $('input#reorder').val();
+	// 	var stcode 			= $('input#stockcode').val();
+	// 	var stdescription 	= $('textarea#stock_description').val();
+	// 	var stunit 			= $('input#unit').val();
+	// 	var stcategory 		= $('textarea#category').val();
+	// 	var streorder 		= $('input#reorder').val();
 
-		$.ajax({
-		url: "{{ url('/supplies-summary/update-stock') }}/"+id,
-		type: "POST",
-		data: {_token: CSRF_TOKEN,stockcode: stcode,stock_description: stdescription,unit: stunit, category:stcategory, reorder: streorder},
-		success: function(response){
+	// 	$.ajax({
+	// 	url: "{{ url('/supplies-summary/update-stock') }}/"+id,
+	// 	type: "POST",
+	// 	data: {_token: CSRF_TOKEN,stockcode: stcode,stock_description: stdescription,unit: stunit, category:stcategory, reorder: streorder},
+	// 	success: function(response){
 	
-			response = JSON.parse(JSON.stringify(response))
+	// 		response = JSON.parse(JSON.stringify(response))
 
-			tempAlert("Changes successfully save.",2000);
-			$('#item-edit-modal').modal('hide');
-			window.location.reload();
+	// 		tempAlert("Changes successfully save.",2000);
+	// 		$('#item-edit-modal').modal('hide');
+	// 		window.location.reload();
 
-		},
-		error: function(){
-			alert("Error processing request, please try again");
-		}
-		});
-		e.preventDefault();
+	// 	},
+	// 	error: function(){
+	// 		alert("Error processing request, please try again");
+	// 	}
+	// 	});
+	// 	e.preventDefault();
 
-	});
+	// });
 
 	//OLD Add new Stocks
 	// $(document).ready(function() {
@@ -367,36 +366,36 @@
 	// });
 
 	//SAVING NEW STOCK
-	$(document).on("click",".add_stock",function(e){
-		var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
-		var id  	= $('input#st_id').val();
+	// $(document).on("click",".add_stock",function(e){
+	// 	var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
+	// 	var id  	= $('input#st_id').val();
 
-		var stcode 			= $('input#a_stockcode').val();
-		var stdescription 	= $('textarea#a_stock_description').val();
-		var stunit 			= $('input#a_unit').val();
-		var stcategory 		= $('textarea#a_category').val();
-		var streorder 		= $('input#a_reorder').val();
+	// 	var stcode 			= $('input#a_stockcode').val();
+	// 	var stdescription 	= $('textarea#a_stock_description').val();
+	// 	var stunit 			= $('input#a_unit').val();
+	// 	var stcategory 		= $('textarea#a_category').val();
+	// 	var streorder 		= $('input#a_reorder').val();
 
-		$.ajax({
-		url: "{{ url('/library/add-new-stock') }}/",
-		type: "POST",
-		data: {_token: CSRF_TOKEN,stockcode: stcode,stock_description: stdescription,unit: stunit, category:stcategory, reorder: streorder},
-		success: function(response){
+	// 	$.ajax({
+	// 	url: "{{ url('/library/add-new-stock') }}/",
+	// 	type: "POST",
+	// 	data: {_token: CSRF_TOKEN,stockcode: stcode,stock_description: stdescription,unit: stunit, category:stcategory, reorder: streorder},
+	// 	success: function(response){
 	
-			response = JSON.parse(JSON.stringify(response))
+	// 		response = JSON.parse(JSON.stringify(response))
 
-			tempAlert("Changes successfully save.",2000);
-			$('#new-item-modal').modal('hide');
-			window.location.reload();
+	// 		tempAlert("Changes successfully save.",2000);
+	// 		$('#new-item-modal').modal('hide');
+	// 		window.location.reload();
 
-		},
-		error: function(){
-			alert("Error processing request, please try again");
-		}
-		});
-		e.preventDefault();
+	// 	},
+	// 	error: function(){
+	// 		alert("Error processing request, please try again");
+	// 	}
+	// 	});
+	// 	e.preventDefault();
 
-	});
+	// });
 
 
 	//===========================================================
@@ -406,8 +405,8 @@
 	var allStocksTable;
 
 	//snackbar/toast function
-	function updateSnackbarFunction(m, flag) {
-		$("#notif-message").val(m);
+	function updateSnackbarFunction(m) {
+		$("#notif-message").text(m);
 		var x = document.getElementById("update-snackbar");
 		x.className = "show-update";
 		setTimeout(function(){ x.className = x.className.replace("show-update", ""); }, 3000);
@@ -442,30 +441,31 @@
 	}
 
 	//saving new stock
-	$(document).on("click",".add_stock",function(e){
+	$(document).on("click",".add-ind-stock",function(e){
 		var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
 
-		var stock_code = $('#tock_code').val();
-		var stock_description 	= $('#description').val();
+		var stock_code = $('#stock_code').val();
+		var stock_description = $('#description').val();
 		var unit = $('#unit').find(":selected").val();
 		var expense_category = $('#expense_category').find(":selected").val();
 
 		$.ajax({
-		url: "{{ route('upload_individual_stocks') }}/",
-		type: "POST",
-		data: {
-			_token: CSRF_TOKEN,
-			stock_code: stock_code,
-			description: stock_description,
-			unit: unit, 
-			expense_category: expense_category
-		},
-		success: function(response) {
-			allStocksTable.ajax.reload(null, false);
-			updateSnackbarFunction("Stock added successfully.", 1);
-		}, error: function() {
-			alupdateSnackbarFunction("Error processing request, please try again", 0);
-		}
+			url: "{{ route('upload_individual_stocks') }}",
+			type: "POST",
+			data: {
+				_token: CSRF_TOKEN,
+				stock_code: stock_code,
+				description: stock_description,
+				unit: unit, 
+				expense_category: expense_category
+			},
+			success: function(response) {
+				$("#addStocksModal").modal("hide");
+				allStocksTable.ajax.reload(null, false);
+				updateSnackbarFunction("Stock added successfully.");
+			}, error: function() {
+				alupdateSnackbarFunction("Error processing request, please try again");
+			}
 		});
 		e.preventDefault();
 
@@ -502,8 +502,6 @@
 		var edit_unit = $('#edit_unit').find(":selected").val();
 		var edit_expense_category = $('#edit_expense_category').find(":selected").val();
 
-		console.log(id + " " + edit_stock_code + " " + edit_stock_description + " " + edit_unit + " " + edit_expense_category);
-
 		$.ajax({
 			url: "{{ url('/library/update_ind_stock') }}/" + id,
 			type: "POST",
@@ -514,10 +512,12 @@
 					expense_category: edit_expense_category
 				},
 			success: function(response) {
+					$("#editStocksModal").modal('hide');
 					allStocksTable.ajax.reload(null, false);
-					updateSnackbarFunction("Item updated successfully.", 1);
+					updateSnackbarFunction("Item updated successfully.");
 			}, error: function(response) {
-				updateSnackbarFunction("Error processing request, please try again.", 0);
+				$("#editStocksModal").modal('hide');
+				updateSnackbarFunction("Error processing request, please try again.");
 			}
 		});
 		e.preventDefault();
@@ -535,10 +535,10 @@
 					data: {_token: CSRF_TOKEN, id: id},
 					success: function() {
 						allStocksTable.ajax.reload(null, false);
-						updateSnackbarFunction("Item deleted successfully.", 1);
+						updateSnackbarFunction("Item deleted successfully.");
 					},
 					error: function(){
-						updateSnackbarFunction("Error processing request, please try again.", 0);
+						updateSnackbarFunction("Error processing request, please try again.");
 					}
 				});
 			}

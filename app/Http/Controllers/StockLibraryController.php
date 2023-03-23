@@ -174,7 +174,6 @@ class StockLibraryController extends Controller
     public function updateStock(Request $request) {
         if(request()->ajax()) {
             Stock::find($request->id)->update($request->all());
-
             return response()->json(['message' => 'Updated successfully']);
         }
     }

@@ -249,7 +249,7 @@
 
     #update-snackbar {
       visibility: hidden;
-      min-width: 250px;
+      min-width: 260px;
       background-color: #51a954;
       color: #fff;
       text-align: center;
@@ -260,6 +260,9 @@
       right: 20px;
       z-index: 1;
       font-size: 17px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
     }
 
     #update-snackbar.show-update {
