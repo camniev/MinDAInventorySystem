@@ -158,10 +158,10 @@
 
 					<div id="upload_excel_stocks" role="tabpanel" aria-labelledby="upload_excel_stocks_tab" class="tab-pane fade px-4 pt-4">
 						<div class="fu-wrapper">
-							<form action="{{ route('batch_upload_stocks') }}" class="fu-form"method="POST" enctype="multipart/form-data">
-							@csrf
+							<form action="#" class="fu-form">
+							<!-- @ csrf -->
 								<div class="div-fu-form"> <!-- browse file div -->
-									<input class="file-input" type="file" name="file" hidden>
+									<input class="file-input" type="file" id="input-excel-file" name="file" hidden>
 									<i class="fas fa-cloud-upload-alt"></i>
 									<p>Browse the Excel File to Upload</p>
 								</div> <!-- end browse file div -->
@@ -170,7 +170,7 @@
 
 								<div class="mt-3 mb-5 pull-right"> <!-- form buttons -->
 									<button type="button" class="btn btn-blank mr-1" data-dismiss="modal"> Close</button>
-									<button type="submit" class="btn btn-primary"> Upload</button>
+									<button type="submit" class="btn btn-primary upload-excel-file"> Upload</button>
 								</div> <!-- end form buttons -->
 							
 							<!-- button submit and close -->
@@ -403,6 +403,7 @@
 	//===========================================================
 	//CAMERON
 	var allStocksTable;
+	var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
 
 	//snackbar/toast function
 	function updateSnackbarFunction(m) {
@@ -442,8 +443,6 @@
 
 	//saving new stock
 	$(document).on("click",".add-ind-stock",function(e){
-		var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
-
 		var stock_code = $('#stock_code').val();
 		var stock_description = $('#description').val();
 		var unit = $('#unit').find(":selected").val();
@@ -471,7 +470,38 @@
 
 	});
 
-	//OPEN EDIT MODAL WITH DATA
+	//upload excel
+	$(document).on("click", ".upload-excel-file", function(e) {
+		var excel_file = $('#input-excel-file')[0].files;
+
+		if(excel_file.length > 0) {
+			var fd = new FormData();
+
+			fd.append('file',excel_file[0]);
+			fd.append('_token', CSRF_TOKEN);
+
+			$.ajax({
+				url: "{{ route('batch_upload_stocks') }}",
+				type: "POST",
+				data: fd,
+				contentType: false,
+				processData: false,
+				dataType: 'json',
+				success: function(response) {
+					$("#addStocksModal").modal("hide");
+					allStocksTable.ajax.reload(null, false);
+					console.log("success");
+					updateSnackbarFunction("Stock added successfully.");
+				},
+				error: function(response) {
+					$("#addStocksModal").modal("hide");
+					updateSnackbarFunction("Error processing request, please try again.");
+				}
+			});
+		}
+	});
+
+	//new edit 
 	$(document).on("click", ".edit-ind-stock" , function(e) {
 		var stock_id = $(this).attr("data-id"); 
 
@@ -494,7 +524,7 @@
 
 	//new update stock
 	$(document).on("click",".new_update_stock",function(e){
-		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
 		var id = $('#edit_stock_id').val();
 
 		var edit_stock_code = $('#edit_stock_code').val();
@@ -526,7 +556,6 @@
 	//new delete stock
 	$(document).ready(function() {
 		$(document).on("click",".delete-ind-stock", function(e){
-			var CSRF_TOKEN 	= $('meta[name="csrf-token"]').attr('content');
 			var id = $(this).attr("data-id"); 
 			if (confirm('Are you sure you want to remove/delete this stock item?')) {
 				$.ajax({

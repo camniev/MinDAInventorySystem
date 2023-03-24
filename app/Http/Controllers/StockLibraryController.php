@@ -163,7 +163,7 @@ class StockLibraryController extends Controller
     //CAMERON
     public function batchUploadStocks(Request $request) {
         Excel::import(new ImportStock, $request->file('file')->store('files'));
-        return redirect()->back()->with(['message' => 'Uploaded successfully.']);
+        return response()->json(['message' => 'File uploaded successfully']);
     }
 
     public function addIndividualStock(Request $request) {

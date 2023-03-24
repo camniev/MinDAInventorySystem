@@ -7,7 +7,6 @@ uploadedArea = document.querySelector(".uploaded-area");
 
 // form click event
 divForm.addEventListener("click", () =>{
-	console.log('event is clicked');
 	fileInput.click();
 });
 
