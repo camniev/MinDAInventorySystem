@@ -9,8 +9,8 @@
 			<h5 class="mr-3">Library</h5>
 			<span class="mr-3">&#11044;</span>
 			<h1>Stocks Library</h1>
+			<button type="button" class="btn btn-info btn-lg pull-right ml-auto" data-toggle="modal" data-target="#addStocksModal" onclick="addStocksModal();"><i class="fa fa-plus"></i> Add New Stocks</button>
 		</div>
-		<button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#addStocksModal" onclick="addStocksModal();" style="margin-bottom: 20px;"><i class="fa fa-plus"></i> Add New Stocks</button>
 	</section>
 	<section class="content">
 		<!-- <div style="background-color: #fff; display: inline-block; width: 100%; padding: 30px;"> -->

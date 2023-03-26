@@ -290,6 +290,11 @@
       from {top: 70px; opacity: 1;}
       to {top: 0; opacity: 0;}
     }
+
+    .btn-info {
+      background-color: #3c8dbc;
+      border-color: #3c8dbc;
+    }
     
      </style>
 
