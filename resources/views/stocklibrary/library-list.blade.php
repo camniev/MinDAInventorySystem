@@ -158,8 +158,8 @@
 
 					<div id="upload_excel_stocks" role="tabpanel" aria-labelledby="upload_excel_stocks_tab" class="tab-pane fade px-4 pt-4">
 						<div class="fu-wrapper">
-							<form action="#" class="fu-form">
-							<!-- @ csrf -->
+							<div class="fu-form">
+								<!-- @ csrf -->
 								<div class="div-fu-form"> <!-- browse file div -->
 									<input class="file-input" type="file" id="input-excel-file" name="file" hidden>
 									<i class="fas fa-cloud-upload-alt"></i>
@@ -173,8 +173,8 @@
 									<button type="submit" class="btn btn-primary upload-excel-file"> Upload</button>
 								</div> <!-- end form buttons -->
 							
-							<!-- button submit and close -->
-							</form> <!-- end form -->
+								<!-- button submit and close -->
+							</div> <!-- end form -->
 						</div>
 					</div> <!-- End excel upload tab -->
 				</div>
@@ -490,8 +490,7 @@
 				success: function(response) {
 					$("#addStocksModal").modal("hide");
 					allStocksTable.ajax.reload(null, false);
-					console.log("success");
-					updateSnackbarFunction("Stock added successfully.");
+					updateSnackbarFunction(response.message);
 				},
 				error: function(response) {
 					$("#addStocksModal").modal("hide");
