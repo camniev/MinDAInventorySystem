@@ -19,6 +19,50 @@
 				<div class="box">
 					<div class="box-header">
 					</div>
+					<div class="box-body">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>SEARCH</label>
+								<input type="email" class="form-control" placeholder="Search for stock codes, description, etc...">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>UNIT</label>
+								<select class="form-control select2" name="unit" id="unit" style="width: 100%;">
+								<option value="" selected disabled>All</option>
+									@foreach($distinct_unit as $data) 
+									<option value="{{ $data->unit }}">{{ $data->unit }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+							<label>EXPENSE CATEGORY</label>
+							<select class="form-control select2" name="expense_category" id="expense_category" style="width: 100%;">
+								<option value="" selected disabled>All</option>
+								@foreach($distinct_expense_category as $data) 
+								<option value="{{ $data->expense_category }}">{{ $data->expense_category }}</option>
+								@endforeach
+							</select>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label style="color: rgba(0,0,0,0.0);">SEARCH</label>
+								<button class="btn btn-info w-100">SEARCH</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box">
+					<div class="box-header">
+					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
 						<!-- Stocks Library DataTable -->
