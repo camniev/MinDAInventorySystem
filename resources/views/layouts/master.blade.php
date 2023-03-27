@@ -131,6 +131,16 @@
         width: 700px;
       }
 
+      .box-new {
+        position: relative;
+        border-radius: 3px;
+        background: #ffffff;
+        margin-bottom: 20px;
+        width: 100%;
+        box-shadow: 0 3px 3px rgba(0,0,0,0.03);
+        border-radius: 20px;
+      }
+
       .modal-body .form-group input[type=text], .modal-body .form-group textarea, .modal-body .form-group select {
         border: 0px;
         background-color: #e9f3f5;

@@ -16,14 +16,21 @@
 		<!-- <div style="background-color: #fff; display: inline-block; width: 100%; padding: 30px;"> -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="box">
+				<div class="box-new">
 					<div class="box-header">
 					</div>
 					<div class="box-body">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>SEARCH</label>
-								<input type="email" class="form-control" placeholder="Search for stock codes, description, etc...">
+
+								<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-search"></i>
+								</div>
+									<input type="text" class="form-control" placeholder="Search for stock codes, description, etc...">
+								</div>
+								<!-- /.input group -->
 							</div>
 						</div>
 						<div class="col-md-2">
@@ -60,11 +67,11 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="box">
+				<div class="box-new">
 					<div class="box-header">
 					</div>
 					<!-- /.box-header -->
-					<div class="box-body">
+					<div class="box-body p-5">
 						<!-- Stocks Library DataTable -->
 						<table id="stocksTable" class="table table-bordered table-striped ">
 						
